@@ -5,11 +5,11 @@ namespace Controller
     [RequireComponent(typeof(Rigidbody))]
     public class Ball : MonoBehaviour
     {
-        private const float FirstSpeedBorderModifier = 1.3f;
+        private const float FirstSpeedBorderModifier = 1.5f;
         private const float SecondSpeedBorderModifier = 2.5f;
         private const float SpeedModifier = 1.5f;
-        private const float MaxBounceAngle = 40f;
-        private const float MinContactDistance = 0.7f;
+        private const float MaxBounceAngle = 30f;
+        private const float MinContactDistanceRatio = 0.7f;
 
         [SerializeField] private BallBeater _ballBeater;
         [SerializeField] private float _startSpeed;
@@ -49,8 +49,7 @@ namespace Controller
             if (collision.transform.TryGetComponent(out PlatformMover _))
             {
                 if (collision.relativeVelocity.z > _currentSpeed * FirstSpeedBorderModifier
-                || collision.relativeVelocity.x > _currentSpeed * FirstSpeedBorderModifier
-                || collision.relativeVelocity.x < -_currentSpeed * FirstSpeedBorderModifier)
+                || Mathf.Abs(collision.relativeVelocity.x) > _currentSpeed * FirstSpeedBorderModifier)
                 {
                     if (collision.relativeVelocity.z > _currentSpeed * SecondSpeedBorderModifier)
                     {
@@ -64,8 +63,9 @@ namespace Controller
                     Collider platform = collision.collider;
                     Vector3 direction = _rigidbody.velocity.normalized;
                     Vector3 contactDistance = platform.bounds.center - transform.position;
+                    float contactDistanceRatio = Mathf.Abs(contactDistance.x / (platform.bounds.center.x - platform.bounds.min.x));
 
-                    if (contactDistance.x <= -MinContactDistance || contactDistance.x >= MinContactDistance)
+                    if (contactDistanceRatio >= MinContactDistanceRatio)
                     {
                         float bounceAngle = (contactDistance.x / platform.bounds.size.x) * MaxBounceAngle;
                         direction = Quaternion.AngleAxis(bounceAngle, Vector3.down) * direction;
