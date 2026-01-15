@@ -14,7 +14,7 @@ namespace Field
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (_isDestroyable && collision.transform.TryGetComponent(out Ball ball))
+            if (_isDestroyable && collision.transform.TryGetComponent(out BallMover ball))
             {
                 Triggered?.Invoke();
             }

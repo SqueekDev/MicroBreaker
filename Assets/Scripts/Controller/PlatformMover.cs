@@ -1,46 +1,46 @@
-using UnityEngine;
 using Field;
+using UnityEngine;
 
 namespace Controller
 {
-    [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(Rigidbody), typeof(Collider))]
     public class PlatformMover : MonoBehaviour
     {
-        private const float DefaultSpeedModifier = 20f;
-        private const float DefaultInversionModifier = 1f;
-
+        [SerializeField] private PlatformSpeedChanger _speedChanger;
+        [SerializeField] private PlatformInversionChanger _inversionChanger;
         [SerializeField] private InputDetector _inputDetector;
         [SerializeField] private DeadZone _deadZone;
         [SerializeField] private StartPlatformPosition _startPosition;
-        [SerializeField] private PlatformBorder _horizontalBorder;
-        [SerializeField] private PlatformBorder _verticalBorder;
         [SerializeField] private PlatformMoveBorder _topBorder;
         [SerializeField] private PlatformMoveBorder _bottomBorder;
         [SerializeField] private PlatformMoveBorder _leftBorder;
         [SerializeField] private PlatformMoveBorder _rightBorder;
+        [SerializeField] private float _baseInversion;
         [SerializeField] private LayerMask _inputMask;
         [SerializeField] private float _zOffset;
 
         private float _rayDistance = Mathf.Infinity;
         private Rigidbody _rigidbody;
+        private Collider _collider;
         private Camera _camera;
         private Vector3 _offset;
-        private float _currentSpeedModifier;
-        private float _currentInversionModifier;
         private Vector3 _currentTarget;
         private float _verticalOffset;
         private float _currentHorizontalOffset;
+
+        private float _currentSpeedModifier => _speedChanger.CurrentSpeedModifier;
+        private float _speed => _speedChanger.CurrentBaseSpeed;
+        private float _currentInversionModifier => _inversionChanger.CurrentInversionModifier;
 
         private void Awake()
         {
             _camera = Camera.main;
             _rigidbody = GetComponent<Rigidbody>();
+            _collider = GetComponent<Collider>();
             _currentTarget = _startPosition.transform.position;
-            _currentSpeedModifier = DefaultSpeedModifier;
-            _currentInversionModifier = DefaultInversionModifier;
             _offset = new Vector3(0, 0, _zOffset);
-            _verticalOffset = _verticalBorder.transform.position.z - transform.position.z;
-            _currentHorizontalOffset = _horizontalBorder.transform.position.x - transform.position.x;
+            _verticalOffset = _collider.bounds.min.z - transform.position.z;
+            _currentHorizontalOffset = _collider.bounds.max.x - transform.position.x;
         }
 
         private void OnEnable()
@@ -53,7 +53,7 @@ namespace Controller
         private void FixedUpdate()
         {
             Vector3 dirrection = _currentTarget - transform.position;
-            Vector3 nextPosition = transform.position + dirrection * _currentSpeedModifier * Time.fixedDeltaTime;
+            Vector3 nextPosition = transform.position + dirrection * _speed * _currentSpeedModifier * Time.fixedDeltaTime;
             _rigidbody.MovePosition(nextPosition);
         }
 
@@ -76,7 +76,7 @@ namespace Controller
 
             if (Physics.Raycast(ray, out RaycastHit hit, _rayDistance, _inputMask))
             {
-                _currentTarget = (hit.point + _offset) * _currentInversionModifier;
+                _currentTarget = (hit.point + _offset) * _baseInversion * _currentInversionModifier;
                 CheckBorders();
             }
         }
@@ -89,7 +89,7 @@ namespace Controller
 
         private void OnLevelStarted()
         {
-            transform.position = _startPosition.transform.position;
+            _currentTarget = _startPosition.transform.position;
         }
     }
 }

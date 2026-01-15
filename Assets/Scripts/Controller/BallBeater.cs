@@ -8,7 +8,7 @@ namespace Controller
     {
         [SerializeField] private InputDetector _inputDetector;
         [SerializeField] private DeadZone _deadZone;
-        [SerializeField] private Ball _ball;
+        [SerializeField] private BallMover _ball;
         [SerializeField] private BallStartPoint _startPoint;
 
         private bool _isReleased = false;

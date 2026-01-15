@@ -15,7 +15,7 @@ namespace Field
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out Ball ball))
+            if (other.TryGetComponent(out BallMover ball))
             {
                 Activated?.Invoke();
                 Debug.Log("Activated");

@@ -7,7 +7,7 @@ namespace Field
     {
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.transform.TryGetComponent(out Ball ball))
+            if (collision.transform.TryGetComponent(out BallMover ball))
             {
                 Triggered?.Invoke();
             }

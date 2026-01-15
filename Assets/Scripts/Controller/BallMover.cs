@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Controller
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class Ball : MonoBehaviour
+    public class BallMover : MonoBehaviour
     {
         private const float FirstSpeedBorderModifier = 1.5f;
         private const float SecondSpeedBorderModifier = 2.5f;
@@ -12,7 +12,7 @@ namespace Controller
         private const float MinContactDistanceRatio = 0.7f;
 
         [SerializeField] private BallBeater _ballBeater;
-        [SerializeField] private float _startSpeed;
+        [SerializeField] private BallBaseSpeedController _speedController;
 
         private Rigidbody _rigidbody;
         private float _currentSpeed;
@@ -21,13 +21,17 @@ namespace Controller
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
-            _currentSpeed = _startSpeed;
         }
 
         private void OnEnable()
         {
             _ballBeater.Released += OnReleased;
-            _ballBeater.Restarted += OnRestarted;
+            _ballBeater.Restarted += OnLevelRestarted;
+        }
+
+        private void Start()
+        {
+            _currentSpeed = _speedController.CurrentBaseSpeed;
         }
 
         private void FixedUpdate()
@@ -41,7 +45,7 @@ namespace Controller
         private void OnDisable()
         {
             _ballBeater.Released -= OnReleased;
-            _ballBeater.Restarted -= OnRestarted;
+            _ballBeater.Restarted -= OnLevelRestarted;
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -49,9 +53,9 @@ namespace Controller
             if (collision.transform.TryGetComponent(out PlatformMover _))
             {
                 if (collision.relativeVelocity.z > _currentSpeed * FirstSpeedBorderModifier
-                || Mathf.Abs(collision.relativeVelocity.x) > _currentSpeed * FirstSpeedBorderModifier)
+                || Mathf.Abs(collision.relativeVelocity.x) > _speedController.CurrentBaseSpeed * FirstSpeedBorderModifier)
                 {
-                    if (collision.relativeVelocity.z > _currentSpeed * SecondSpeedBorderModifier)
+                    if (collision.relativeVelocity.z > _currentSpeed * SecondSpeedBorderModifier && _currentSpeed < _speedController.MaxSpeed)
                     {
                         _currentSpeed *= SpeedModifier;
                     }
@@ -73,13 +77,13 @@ namespace Controller
                     }
                 }
             }
-            else if (_currentSpeed > _startSpeed)
+            else if (_currentSpeed > _speedController.CurrentBaseSpeed)
             {
-                _currentSpeed = _startSpeed;
+                _currentSpeed = _speedController.CurrentBaseSpeed;
             }
         }
 
-        private void OnRestarted()
+        private void OnLevelRestarted()
         {
             _isReleased = false;
             _rigidbody.isKinematic = true;
