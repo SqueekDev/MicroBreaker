@@ -2,7 +2,7 @@ using Base;
 using Boosters;
 using UnityEngine;
 
-namespace Controller
+namespace Ball
 {
     public class BallBaseSpeedController : MonoBehaviour
     {
@@ -49,7 +49,7 @@ namespace Controller
         private void OnSpeedIncreased()
         {
             CurrentBaseSpeed = _maxSpeed;
-            _timer = PlayerUtilities.BaseBoosterDuration;
+            _timer = PlayerUtilities.BaseBoosterDurationTime;
         }
 
         private void OnBoostersRestarted()

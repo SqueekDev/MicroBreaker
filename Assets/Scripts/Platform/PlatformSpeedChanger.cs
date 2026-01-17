@@ -3,7 +3,7 @@ using Base;
 using Boosters;
 using UnityEngine;
 
-namespace Controller
+namespace Platform
 {
     public class PlatformSpeedChanger : MonoBehaviour
     {
@@ -16,8 +16,7 @@ namespace Controller
 
         private Coroutine _slowdownCoroutine;
         private Coroutine _freezeCoroutine;
-        private WaitForSeconds _slowdownDelay;
-        private WaitForSeconds _stopDelay;
+        private WaitForSeconds _freezeDelay;
 
         public float CurrentBaseSpeed { get; private set; }
         public float CurrentSpeedModifier { get; private set; }
@@ -26,8 +25,7 @@ namespace Controller
         {
             CurrentBaseSpeed = _startSpeed;
             CurrentSpeedModifier = DefaultSpeedModifier;
-            _slowdownDelay = new WaitForSeconds(PlayerUtilities.BaseBoosterDuration);
-            _stopDelay = new WaitForSeconds(StopDuration);
+            _freezeDelay = new WaitForSeconds(StopDuration);
         }
 
         private void OnEnable()
@@ -47,14 +45,14 @@ namespace Controller
         private IEnumerator Slowdown()
         {
             CurrentSpeedModifier = SlowdownModifier;
-            yield return _slowdownDelay;
+            yield return PlayerUtilities.BaseBoostersDelay;
             CurrentSpeedModifier = DefaultSpeedModifier;
         }
 
         private IEnumerator Freeze()
         {
             CurrentBaseSpeed = 0;
-            yield return _stopDelay;
+            yield return _freezeDelay;
             CurrentBaseSpeed = _startSpeed;
         }
 

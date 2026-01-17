@@ -1,5 +1,5 @@
 using System;
-using Controller;
+using Ball;
 using UnityEngine;
 
 namespace Field
@@ -18,7 +18,6 @@ namespace Field
             if (other.TryGetComponent(out BallMover ball))
             {
                 Activated?.Invoke();
-                Debug.Log("Activated");
             }
         }
     }

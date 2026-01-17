@@ -4,7 +4,8 @@ namespace Base
 {
     public static class PlayerUtilities
     {
-        public static float BaseBoosterDuration = 5f;
+        public static float BaseBoosterDurationTime = 10f;
+        public static WaitForSeconds BaseBoostersDelay = new WaitForSeconds(BaseBoosterDurationTime);
 
         public static void CheckCoroutine(Coroutine coroutine, MonoBehaviour behaviour)
         {

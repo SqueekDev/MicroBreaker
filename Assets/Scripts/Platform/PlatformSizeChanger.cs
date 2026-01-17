@@ -1,4 +1,6 @@
-namespace Boosters
+using Controller;
+
+namespace Platform
 {
     public class PlatformSizeChanger : BaseSizeChanger
     {

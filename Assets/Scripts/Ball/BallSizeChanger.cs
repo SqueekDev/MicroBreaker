@@ -1,4 +1,6 @@
-namespace Boosters
+using Controller;
+
+namespace Ball
 {
     public class BallSizeChanger : BaseSizeChanger
     {

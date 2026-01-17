@@ -1,6 +1,8 @@
+using Controller;
+using Platform;
 using UnityEngine;
 
-namespace Controller
+namespace Ball
 {
     [RequireComponent(typeof(Rigidbody))]
     public class BallMover : MonoBehaviour
@@ -11,7 +13,7 @@ namespace Controller
         private const float MaxBounceAngle = 30f;
         private const float MinContactDistanceRatio = 0.7f;
 
-        [SerializeField] private BallBeater _ballBeater;
+        [SerializeField] private BallLauncher _ballBeater;
         [SerializeField] private BallBaseSpeedController _speedController;
 
         private Rigidbody _rigidbody;
@@ -57,7 +59,8 @@ namespace Controller
                 {
                     if (collision.relativeVelocity.z > _currentSpeed * SecondSpeedBorderModifier && _currentSpeed < _speedController.MaxSpeed)
                     {
-                        _currentSpeed *= SpeedModifier;
+                        _currentSpeed = _speedController.CurrentBaseSpeed * SpeedModifier;
+                        Debug.Log(_currentSpeed);
                     }
 
                     _rigidbody.velocity = collision.rigidbody.velocity.normalized * _currentSpeed;

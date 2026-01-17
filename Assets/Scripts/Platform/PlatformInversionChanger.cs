@@ -3,7 +3,7 @@ using Base;
 using Boosters;
 using UnityEngine;
 
-namespace Controller
+namespace Platform
 {
     public class PlatformInversionChanger : MonoBehaviour
     {
@@ -12,14 +12,12 @@ namespace Controller
 
         [SerializeField] private BoostersNotifier _notifier;
 
-        private WaitForSeconds _delay;
         private Coroutine _inversionCoroutine;
 
         public float CurrentInversionModifier { get; private set; }
 
         private void Awake()
         {
-            _delay = new WaitForSeconds(PlayerUtilities.BaseBoosterDuration);
             CurrentInversionModifier = DefaultInversionModifier;
         }
 
@@ -38,7 +36,7 @@ namespace Controller
         private IEnumerator InversionEnabling()
         {
             CurrentInversionModifier = ChangedInversionModifier;
-            yield return _delay;
+            yield return PlayerUtilities.BaseBoostersDelay;
             CurrentInversionModifier = DefaultInversionModifier;
         }
 

@@ -1,10 +1,11 @@
 using System;
+using Ball;
 using Field;
 using UnityEngine;
 
 namespace Controller
 {
-    public class BallBeater : MonoBehaviour
+    public class BallLauncher : MonoBehaviour
     {
         [SerializeField] private InputDetector _inputDetector;
         [SerializeField] private DeadZone _deadZone;

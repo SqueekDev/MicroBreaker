@@ -10,7 +10,7 @@ namespace Boosters
         public Action BallSizeDecreased;
         public Action PlatformSizeIncreased;
         public Action PlatformSizeDecreased;
-        public Action LazerEnabled;
+        public Action LaserEnabled;
         public Action MirrorEnabled;
         public Action ShieldEnabled;
         public Action PortalEnabled;
@@ -20,7 +20,7 @@ namespace Boosters
         public Action BallSpeedIncreased;
         public Action InversionEnabled;
         public Action PlatformSpeedDecreased;
-        public Action UnbreakebleBricksEnabled;
+        public Action SteelBricksEnabled;
         public Action BricksFallEnabled;
         public Action VisionFailureEnabled;
         public Action PlatformFrosenEnabled;

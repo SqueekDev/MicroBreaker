@@ -1,7 +1,8 @@
+using Controller;
 using Field;
 using UnityEngine;
 
-namespace Controller
+namespace Platform
 {
     [RequireComponent(typeof(Rigidbody), typeof(Collider))]
     public class PlatformMover : MonoBehaviour
