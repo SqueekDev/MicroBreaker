@@ -7,7 +7,7 @@ namespace Ball
     {
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out MirrorBorder mirror))
+            if (other.TryGetComponent(out PortalBorder mirror))
             {
                 if (mirror.IsReflecting == false)
                 {

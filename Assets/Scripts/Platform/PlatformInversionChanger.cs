@@ -14,11 +14,11 @@ namespace Platform
 
         private Coroutine _inversionCoroutine;
 
-        public float CurrentInversionModifier { get; private set; }
+        public float InversionModifier { get; private set; }
 
         private void Awake()
         {
-            CurrentInversionModifier = DefaultInversionModifier;
+            InversionModifier = DefaultInversionModifier;
         }
 
         private void OnEnable()
@@ -35,9 +35,9 @@ namespace Platform
 
         private IEnumerator InversionEnabling()
         {
-            CurrentInversionModifier = ChangedInversionModifier;
+            InversionModifier = ChangedInversionModifier;
             yield return PlayerUtilities.BaseBoostersDelay;
-            CurrentInversionModifier = DefaultInversionModifier;
+            InversionModifier = DefaultInversionModifier;
         }
 
         private void OnInversionEnabled()
@@ -49,7 +49,7 @@ namespace Platform
         private void OnBoostersRestarted()
         {
             PlayerUtilities.CheckCoroutine(_inversionCoroutine, this);
-            CurrentInversionModifier = DefaultInversionModifier;
+            InversionModifier = DefaultInversionModifier;
         }
     }
 }

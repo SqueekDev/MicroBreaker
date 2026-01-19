@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Base;
 using Boosters;
 using UnityEngine;
 
@@ -8,6 +10,7 @@ namespace Controller
         [SerializeField] private BoostersNotifier _notifier;
         [SerializeField] private Vector3 _increasedSizeMultiplier;
         [SerializeField] private Vector3 _decreasedSizeMultiplier;
+        [SerializeField] private List<Scaleable> _targets;
 
         private Vector3 _startScale;
 
@@ -15,7 +18,10 @@ namespace Controller
 
         private void Awake()
         {
-            _startScale = transform.localScale;
+            if (_targets.Count > 0)
+            {
+                _startScale = _targets[0].transform.localScale;
+            }
         }
 
         protected virtual void OnEnable()
@@ -28,9 +34,12 @@ namespace Controller
             _notifier.Reseted -= OnReseted;
         }
 
-        private void ChangeSize(Vector3 multiplier)
+        protected virtual void ChangeSize(Vector3 multiplier)
         {
-            transform.localScale = new Vector3(_startScale.x * multiplier.x, _startScale.y * multiplier.y, _startScale.z * multiplier.z);
+            foreach (var target in _targets)
+            {
+                target.transform.localScale = Vector3.Scale(_startScale, multiplier);
+            }
         }
 
         protected void OnSizeIncreased()
@@ -45,7 +54,7 @@ namespace Controller
 
         private void OnReseted()
         {
-            transform.localScale = _startScale;
+            ChangeSize(Vector3.one);
         }
     }
 }

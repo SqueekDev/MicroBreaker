@@ -8,6 +8,7 @@ namespace Platform
     public class PlatformMover : MonoBehaviour
     {
         [SerializeField] private PlatformSpeedChanger _speedChanger;
+        [SerializeField] private PlatformSizeChanger _sizeChanger;
         [SerializeField] private PlatformInversionChanger _inversionChanger;
         [SerializeField] private InputDetector _inputDetector;
         [SerializeField] private DeadZone _deadZone;
@@ -27,11 +28,11 @@ namespace Platform
         private Vector3 _offset;
         private Vector3 _currentTarget;
         private float _verticalOffset;
-        private float _currentHorizontalOffset;
+        private float _horisontalOffset;
 
-        private float _currentSpeedModifier => _speedChanger.CurrentSpeedModifier;
-        private float _speed => _speedChanger.CurrentBaseSpeed;
-        private float _currentInversionModifier => _inversionChanger.CurrentInversionModifier;
+        private float Speed => _speedChanger.BaseSpeed;
+        private float SpeedModifier => _speedChanger.SpeedModifier;
+        private float InversionModifier => _inversionChanger.InversionModifier;
 
         private void Awake()
         {
@@ -41,20 +42,21 @@ namespace Platform
             _currentTarget = _startPosition.transform.position;
             _offset = new Vector3(0, 0, _zOffset);
             _verticalOffset = _collider.bounds.min.z - transform.position.z;
-            _currentHorizontalOffset = _collider.bounds.max.x - transform.position.x;
+            OnSizeChanged();
         }
 
         private void OnEnable()
         {
             _inputDetector.Detected += OnDetected;
             _inputDetector.Ended += OnTouchEnded;
+            _sizeChanger.Changed += OnSizeChanged;
             _deadZone.Activated += OnLevelStarted;
         }
 
         private void FixedUpdate()
         {
             Vector3 dirrection = _currentTarget - transform.position;
-            Vector3 nextPosition = transform.position + dirrection * _speed * _currentSpeedModifier * Time.fixedDeltaTime;
+            Vector3 nextPosition = transform.position + dirrection * Speed * SpeedModifier * Time.fixedDeltaTime;
             _rigidbody.MovePosition(nextPosition);
         }
 
@@ -62,13 +64,19 @@ namespace Platform
         {
             _inputDetector.Detected -= OnDetected;
             _inputDetector.Ended -= OnTouchEnded;
+            _sizeChanger.Changed -= OnSizeChanged;
             _deadZone.Activated -= OnLevelStarted;
         }
 
         private void CheckBorders()
         {
-            _currentTarget.x = Mathf.Clamp(_currentTarget.x, _leftBorder.transform.position.x + _currentHorizontalOffset, _rightBorder.transform.position.x - _currentHorizontalOffset);
+            _currentTarget.x = Mathf.Clamp(_currentTarget.x, _leftBorder.transform.position.x + _horisontalOffset, _rightBorder.transform.position.x - _horisontalOffset);
             _currentTarget.z = Mathf.Clamp(_currentTarget.z, _bottomBorder.transform.position.z + _verticalOffset, _topBorder.transform.position.z - _verticalOffset);
+        }
+
+        private void OnSizeChanged()
+        {
+            _horisontalOffset = _collider.bounds.max.x - transform.position.x;
         }
 
         private void OnDetected(Touch touch)
@@ -77,7 +85,7 @@ namespace Platform
 
             if (Physics.Raycast(ray, out RaycastHit hit, _rayDistance, _inputMask))
             {
-                _currentTarget = (hit.point + _offset) * _baseInversion * _currentInversionModifier;
+                _currentTarget = (hit.point + _offset) * _baseInversion * InversionModifier;
                 CheckBorders();
             }
         }

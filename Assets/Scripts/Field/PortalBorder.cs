@@ -6,11 +6,11 @@ using UnityEngine;
 
 namespace Field
 {
-    public class MirrorBorder : MonoBehaviour
+    public class PortalBorder : MonoBehaviour
     {
         private const float DelayTime = 0.1f;
 
-        [SerializeField] private MirrorBorder _connectedMirror;
+        [SerializeField] private PortalBorder _connectedMirror;
 
         private Coroutine _changeReflectivityCoroutine;
         private WaitForSeconds _delay = new WaitForSeconds(DelayTime);

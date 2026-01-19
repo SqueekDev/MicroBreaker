@@ -1,10 +1,14 @@
 using System;
+using System.Collections;
+using Base;
 using UnityEngine;
 
 namespace Boosters
 {
     public class BoostersNotifier : MonoBehaviour
     {
+        private Coroutine _testCoroutine;
+
         public Action Reseted;
         public Action BallSizeIncreased;
         public Action BallSizeDecreased;
@@ -26,5 +30,23 @@ namespace Boosters
         public Action PlatformFrosenEnabled;
         public Action PowerPlatformEnabled;
         public Action AutoPlatformEnabled;
+
+        private void Start()
+        {
+            PlayerUtilities.CheckCoroutine(_testCoroutine, this);
+            _testCoroutine = StartCoroutine(Test());
+        }
+
+        private IEnumerator Test()
+        {
+            MirrorEnabled?.Invoke();
+            PlatformSizeIncreased?.Invoke();
+            PlatformSpeedDecreased?.Invoke();
+            BallSizeIncreased?.Invoke();
+            BallSpeedIncreased?.Invoke();
+            BallSizeDecreased?.Invoke();
+            PlatformSizeDecreased?.Invoke();
+            yield return PlayerUtilities.BaseBoostersDelay;
+        }
     }
 }

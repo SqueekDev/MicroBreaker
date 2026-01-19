@@ -42,7 +42,6 @@ namespace Platform
         {
             if (other.TryGetComponent(out Brick brick) || other.TryGetComponent(out FieldBorder border))
             {
-                Debug.Log("LaserTriggered");
                 gameObject.SetActive(false);
             }
         }
