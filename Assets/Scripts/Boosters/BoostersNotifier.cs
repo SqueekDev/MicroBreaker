@@ -40,8 +40,8 @@ namespace Boosters
 
         private void Start()
         {
-            PlayerUtilities.CheckCoroutine(_testCoroutine, this);
-            _testCoroutine = StartCoroutine(Test());
+            //PlayerUtilities.CheckCoroutine(_testCoroutine, this);
+            //_testCoroutine = StartCoroutine(Test());
         }
 
         private void OnDisable()
@@ -51,14 +51,14 @@ namespace Boosters
 
         private IEnumerator Test()
         {
-            yield return new WaitForSeconds(4f);
+            yield return new WaitForSeconds(2f);
             MultiballEnabled?.Invoke();
-            yield return PlayerUtilities.BaseBoostersDelay;
+            yield return new WaitForSeconds(2f);
+            PortalEnabled?.Invoke();
         }
 
         private void OnLevelEnded()
         {
-            Debug.Log("RESETED");
             Reseted?.Invoke();
         }
     }

@@ -36,6 +36,7 @@ namespace Ball
             _ballBeater.Restarted += OnLevelRestarted;
             _speedController.Changed += OnSpeedChanged;
             _currentSpeed = _speedController.CurrentBaseSpeed;
+            _isReleased = true;
         }
 
         private void FixedUpdate()

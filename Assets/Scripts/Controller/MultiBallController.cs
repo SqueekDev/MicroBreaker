@@ -14,23 +14,19 @@ namespace Controller
         private const float BoundValue = 1f;
 
         [SerializeField] private BoostersNotifier _notifier;
+        [SerializeField] private TempLevelController _levelController;
         [SerializeField] private List<BallMover> _balls;
+        [SerializeField] private MainBallChanger _mainBallChanger;
 
         private Coroutine _switchingBallsStateCoroutine;
 
-        public Action<BallMover> MainBallChanged;
         public Action<int> ActiveBallsCountChanged;
 
-        public BallMover MainBall { get; private set; }
-
-        private void Awake()
-        {
-            MainBall = _balls.FirstOrDefault(b => b.gameObject.activeInHierarchy == true);
-            SwitchOffBalls();
-        }
+        public List<BallMover> Balls => _balls;
 
         private void OnEnable()
         {
+            SwitchOffBalls();
             _notifier.MultiballEnabled += OnMultiballEnabled;
             _notifier.Reseted += OnBoostersReseted;
 
@@ -51,21 +47,16 @@ namespace Controller
             }
         }
 
-        private void TryChangeMainBall()
-        {
-            MainBall = _balls.FirstOrDefault(b => b.gameObject.activeInHierarchy == true);
-
-            if (MainBall != null)
-            {
-                MainBallChanged?.Invoke(MainBall);
-            }
-        }
-
         private void ReleaseBalls()
         {
+            if (_mainBallChanger.MainBall.gameObject.activeInHierarchy == false)
+            {
+                return;
+            }
+
             foreach (var ball in _balls)
             {
-                ball.transform.position = MainBall.transform.position;
+                ball.transform.position = _mainBallChanger.MainBall.transform.position;
                 ball.gameObject.SetActive(true);
                 ball.transform.parent = null;
                 Vector3 direction = GetDirection();
@@ -97,7 +88,6 @@ namespace Controller
                 if (ball.gameObject.activeInHierarchy)
                 {
                     count++;
-                    Debug.Log("ACTIVE");
                 }
             }
 
@@ -108,20 +98,17 @@ namespace Controller
         {
             foreach (var ball in _balls)
             {
-                if (ball != MainBall)
+                if (ball != _mainBallChanger.MainBall)
                 {
                     ball.gameObject.SetActive(false);
                 }
             }
-
-            InvokeCountChange();
         }
 
         private void InvokeCountChange()
         {
             int count = GetCurrentActiveBallsCount();
-            Debug.Log(count);
-            //ActiveBallsCountChanged?.Invoke(count);
+            ActiveBallsCountChanged?.Invoke(count);
         }
 
         private IEnumerator SwitchingBallsState()
@@ -134,12 +121,6 @@ namespace Controller
         private void OnBallDestroyed(BallMover ball)
         {
             ball.gameObject.SetActive(false);
-
-            if (ball == MainBall)
-            {
-                TryChangeMainBall();
-            }
-
             InvokeCountChange();
         }
 

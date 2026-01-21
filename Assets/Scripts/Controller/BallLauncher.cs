@@ -8,7 +8,7 @@ namespace Controller
     public class BallLauncher : MonoBehaviour
     {
         [SerializeField] private InputDetector _inputDetector;
-        [SerializeField] private MultiBallController _multiBallController;
+        [SerializeField] private MainBallChanger _mainBallChanger;
         [SerializeField] private TempLevelController _levelController;
         [SerializeField] private BallStartPoint _startPoint;
 
@@ -22,13 +22,14 @@ namespace Controller
         {
             _inputDetector.Ended += OnTouchEnded;
             _levelController.Started += OnLevelStarted;
-            _ball = _multiBallController.MainBall;
+            _mainBallChanger.Changed += OnMainBallChanged;
         }
 
         private void OnDisable()
         {
             _inputDetector.Ended -= OnTouchEnded;
             _levelController.Started -= OnLevelStarted;
+            _mainBallChanger.Changed -= OnMainBallChanged;
         }
 
         private void OnTouchEnded()
@@ -51,6 +52,8 @@ namespace Controller
         private void OnLevelStarted()
         {
             _isReleased = false;
+            _ball = _mainBallChanger.MainBall;
+            _ball.gameObject.SetActive(true);
             _ball.transform.SetParent(_startPoint.transform);
             _ball.transform.position = _startPoint.transform.position;
 
@@ -61,6 +64,11 @@ namespace Controller
             }
 
             Restarted?.Invoke();
+        }
+
+        private void OnMainBallChanged(BallMover ball)
+        {
+            _ball = ball;
         }
     }
 }

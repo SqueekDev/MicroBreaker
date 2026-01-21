@@ -10,7 +10,7 @@ namespace Platform
     {
         [SerializeField] private PlatformMoveTargetSetter _targetSetter;
         [SerializeField] private AutoPlatformController _autoPlatformController;
-        [SerializeField] private MultiBallController _multiBallController;
+        [SerializeField] private MainBallChanger _mainBallChanger;
         [SerializeField] private PlatformSpeedChanger _speedChanger;
         [SerializeField] private PlatformSizeChanger _sizeChanger;
         [SerializeField] private PlatformMoveBorder _topBorder;
@@ -37,7 +37,7 @@ namespace Platform
         {
             _sizeChanger.Changed += OnSizeChanged;
             _targetSetter.Changed += OnTargetChanged;
-            _ball = _multiBallController.MainBall;
+            _ball = _mainBallChanger.MainBall;
         }
 
         private void FixedUpdate()
