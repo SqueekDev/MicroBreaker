@@ -8,11 +8,12 @@ namespace Controller
     public class BallLauncher : MonoBehaviour
     {
         [SerializeField] private InputDetector _inputDetector;
-        [SerializeField] private DeadZone _deadZone;
-        [SerializeField] private BallMover _ball;
+        [SerializeField] private MultiBallController _multiBallController;
+        [SerializeField] private TempLevelController _levelController;
         [SerializeField] private BallStartPoint _startPoint;
 
         private bool _isReleased = false;
+        private BallMover _ball;
 
         public Action Released;
         public Action Restarted;
@@ -20,13 +21,14 @@ namespace Controller
         private void OnEnable()
         {
             _inputDetector.Ended += OnTouchEnded;
-            _deadZone.Activated += OnLevelStarted;
+            _levelController.Started += OnLevelStarted;
+            _ball = _multiBallController.MainBall;
         }
 
         private void OnDisable()
         {
             _inputDetector.Ended -= OnTouchEnded;
-            _deadZone.Activated -= OnLevelStarted;
+            _levelController.Started -= OnLevelStarted;
         }
 
         private void OnTouchEnded()
@@ -35,6 +37,13 @@ namespace Controller
             {
                 _ball.transform.parent = null;
                 _isReleased = true;
+
+                if (_ball.TryGetComponent(out Rigidbody rigidbody))
+                {
+                    rigidbody.isKinematic = false;
+                    rigidbody.AddForce(Vector3.forward, ForceMode.Impulse);
+                }
+
                 Released?.Invoke();
             }
         }
@@ -44,6 +53,13 @@ namespace Controller
             _isReleased = false;
             _ball.transform.SetParent(_startPoint.transform);
             _ball.transform.position = _startPoint.transform.position;
+
+            if (_ball.TryGetComponent(out Rigidbody rigidbody))
+            {
+                rigidbody.isKinematic = true;
+                rigidbody.velocity = Vector3.zero;
+            }
+
             Restarted?.Invoke();
         }
     }

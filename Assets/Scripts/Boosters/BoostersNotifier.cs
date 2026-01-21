@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using Base;
+using Controller;
 using UnityEngine;
 
 namespace Boosters
 {
     public class BoostersNotifier : MonoBehaviour
     {
+        [SerializeField] private TempLevelController _levelController;
         private Coroutine _testCoroutine;
 
         public Action Reseted;
@@ -31,22 +33,33 @@ namespace Boosters
         public Action PowerPlatformEnabled;
         public Action AutoPlatformEnabled;
 
+        private void OnEnable()
+        {
+            _levelController.Ended += OnLevelEnded;
+        }
+
         private void Start()
         {
             PlayerUtilities.CheckCoroutine(_testCoroutine, this);
             _testCoroutine = StartCoroutine(Test());
         }
 
+        private void OnDisable()
+        {
+            _levelController.Ended += OnLevelEnded;
+        }
+
         private IEnumerator Test()
         {
-            MirrorEnabled?.Invoke();
-            PlatformSizeIncreased?.Invoke();
-            PlatformSpeedDecreased?.Invoke();
-            BallSizeIncreased?.Invoke();
-            BallSpeedIncreased?.Invoke();
-            BallSizeDecreased?.Invoke();
-            PlatformSizeDecreased?.Invoke();
+            yield return new WaitForSeconds(4f);
+            MultiballEnabled?.Invoke();
             yield return PlayerUtilities.BaseBoostersDelay;
+        }
+
+        private void OnLevelEnded()
+        {
+            Debug.Log("RESETED");
+            Reseted?.Invoke();
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Controller
         [SerializeField] private Brick _baseBrick;
         [SerializeField] private Brick _zapBrick;
         [SerializeField] private Brick _steelBrick;
-        [SerializeField] private DeadZone _deadZone;
+        [SerializeField] private TempLevelController _levelController;
 
         private Coroutine _changingCoroutine;
         private Brick _activeBrick;
@@ -25,7 +25,7 @@ namespace Controller
 
         private void OnEnable()
         {
-            _deadZone.Activated += OnDeadZoneActivated;
+            _levelController.Started += OnLevelStarted;
             _notifier.ZapBricksEnabled += OnZapBricksEnabled;
             _notifier.SteelBricksEnabled += OnSteelBricksEnabled;
             _notifier.Reseted += OnBoostersReseted;
@@ -33,7 +33,7 @@ namespace Controller
 
         private void OnDisable()
         {
-            _deadZone.Activated -= OnDeadZoneActivated;
+            _levelController.Started -= OnLevelStarted;
             _notifier.ZapBricksEnabled += OnZapBricksEnabled;
             _notifier.SteelBricksEnabled += OnSteelBricksEnabled;
         }
@@ -64,7 +64,7 @@ namespace Controller
             ChangeBrick(_baseBrick, _activeBrick.transform);
         }
 
-        private void OnDeadZoneActivated()
+        private void OnLevelStarted()
         {
             PlayerUtilities.CheckCoroutine(_changingCoroutine, this);
             _isDestroyed = false;
