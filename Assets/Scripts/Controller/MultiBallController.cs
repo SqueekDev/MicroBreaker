@@ -1,9 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using Ball;
-using Base;
 using Boosters;
 using UnityEngine;
 
@@ -17,8 +14,6 @@ namespace Controller
         [SerializeField] private TempLevelController _levelController;
         [SerializeField] private List<BallMover> _balls;
         [SerializeField] private MainBallChanger _mainBallChanger;
-
-        private Coroutine _switchingBallsStateCoroutine;
 
         public Action<int> ActiveBallsCountChanged;
 
@@ -111,13 +106,6 @@ namespace Controller
             ActiveBallsCountChanged?.Invoke(count);
         }
 
-        private IEnumerator SwitchingBallsState()
-        {
-            ReleaseBalls();
-            yield return PlayerUtilities.BaseBoostersDelay;
-            SwitchOffBalls();
-        }
-
         private void OnBallDestroyed(BallMover ball)
         {
             ball.gameObject.SetActive(false);
@@ -126,13 +114,11 @@ namespace Controller
 
         private void OnMultiballEnabled()
         {
-            PlayerUtilities.CheckCoroutine(_switchingBallsStateCoroutine, this);
-            _switchingBallsStateCoroutine = StartCoroutine(SwitchingBallsState());
+            ReleaseBalls();
         }
 
         private void OnBoostersReseted()
         {
-            PlayerUtilities.CheckCoroutine(_switchingBallsStateCoroutine, this);
             SwitchOffBalls();
         }
     }

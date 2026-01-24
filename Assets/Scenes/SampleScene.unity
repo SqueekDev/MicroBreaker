@@ -673,6 +673,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 290898260}
+  - component: {fileID: 290898261}
   m_Layer: 0
   m_Name: Center
   m_TagString: Untagged
@@ -695,6 +696,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2093366505}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &290898261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290898259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abe61088019d01f49bcae0ac405b6980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &301709729
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2209,31 +2222,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
+  m_Script: {fileID: 11500000, guid: 36c3fa2518e84e945ba08c3068ce11f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ShowDebugText: 0
-  m_ShowCameraFrustum: 1
-  m_IgnoreTimeScale: 0
-  m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
-  m_BlendUpdateMethod: 1
-  m_DefaultBlend:
-    m_Style: 1
-    m_Time: 2
-    m_CustomCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  m_CustomBlends: {fileID: 0}
-  m_CameraCutEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_CameraActivatedEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  _notifier: {fileID: 1793176085}
+  _platform: {fileID: 1703425536}
+  _rightBorder: {fileID: 1616750279}
+  _leftBorder: {fileID: 2051479212}
+  _smoothTime: 0.3
+  _targetShakePositionX: 4
+  _targetShakeRotationZ: 20
+  _randomess: 10
+  _vibrato: 1
 --- !u!1 &1031855086
 GameObject:
   m_ObjectHideFlags: 0
@@ -2263,7 +2263,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.15, z: 0}
-  m_LocalScale: {x: 25, y: 0.2, z: 50}
+  m_LocalScale: {x: 50, y: 0.2, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 543450651699979748}
