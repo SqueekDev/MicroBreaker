@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Controller
 {
-    public class BrickController : MonoBehaviour
+    public class BricksChanger : PoolObject
     {
         [SerializeField] private BoostersNotifier _notifier;
         [SerializeField] private Brick _baseBrick;
@@ -23,19 +23,16 @@ namespace Controller
             _activeBrick = _baseBrick;
         }
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             _levelController.Started += OnLevelStarted;
-            _notifier.ZapBricksEnabled += OnZapBricksEnabled;
-            _notifier.SteelBricksEnabled += OnSteelBricksEnabled;
-            _notifier.Reseted += OnBoostersReseted;
+            _notifier.Activated += OnBoosterActivated;
         }
 
         private void OnDisable()
         {
             _levelController.Started -= OnLevelStarted;
-            _notifier.ZapBricksEnabled += OnZapBricksEnabled;
-            _notifier.SteelBricksEnabled += OnSteelBricksEnabled;
+            _notifier.Activated -= OnBoosterActivated;
         }
 
         private void DestroyActiveBrick()
@@ -57,6 +54,24 @@ namespace Controller
             }
         }
 
+        private void EnableZapBricks()
+        {
+            PlayerUtilities.CheckCoroutine(_changingCoroutine, this);
+            _changingCoroutine = StartCoroutine(Changing(_zapBrick, _activeBrick.transform));
+        }
+
+        private void EnableSteelBricks()
+        {
+            PlayerUtilities.CheckCoroutine(_changingCoroutine, this);
+            _changingCoroutine = StartCoroutine(Changing(_steelBrick, _activeBrick.transform));
+        }
+
+        private void ResetBoosters()
+        {
+            PlayerUtilities.CheckCoroutine(_changingCoroutine, this);
+            ChangeBrick(_baseBrick, _activeBrick.transform);
+        }
+
         private IEnumerator Changing(Brick brick, Transform target)
         {
             ChangeBrick(brick, target);
@@ -64,36 +79,34 @@ namespace Controller
             ChangeBrick(_baseBrick, _activeBrick.transform);
         }
 
-        private void OnLevelStarted()
-        {
-            PlayerUtilities.CheckCoroutine(_changingCoroutine, this);
-            _isDestroyed = false;
-            ChangeBrick(_baseBrick, transform);
-        }
-
-        private void OnBrickTriggered()
+        protected virtual void OnBrickTriggered()
         {
             PlayerUtilities.CheckCoroutine(_changingCoroutine, this);
             DestroyActiveBrick();
             _isDestroyed = true;
         }
 
-        private void OnZapBricksEnabled()
+        protected void OnLevelStarted()
         {
             PlayerUtilities.CheckCoroutine(_changingCoroutine, this);
-            _changingCoroutine = StartCoroutine(Changing(_zapBrick, _activeBrick.transform));
+            _isDestroyed = false;
+            ChangeBrick(_baseBrick, transform);
         }
 
-        private void OnSteelBricksEnabled()
+        private void OnBoosterActivated(BoostersEnum type)
         {
-            PlayerUtilities.CheckCoroutine(_changingCoroutine, this);
-            _changingCoroutine = StartCoroutine(Changing(_steelBrick, _activeBrick.transform));
-        }
-
-        private void OnBoostersReseted()
-        {
-            PlayerUtilities.CheckCoroutine(_changingCoroutine, this);
-            ChangeBrick(_baseBrick, _activeBrick.transform);
+            switch (type)
+            {
+                case BoostersEnum.ZapBricksEnabled:
+                    EnableZapBricks();
+                    break;
+                case BoostersEnum.SteelBricksEnabled:
+                    EnableSteelBricks();
+                    break;
+                case BoostersEnum.Reseted:
+                    ResetBoosters();
+                    break;
+            }
         }
     }
 }

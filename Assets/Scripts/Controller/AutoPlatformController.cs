@@ -18,14 +18,24 @@ namespace Controller
 
         private void OnEnable()
         {
-            _notifier.AutoPlatformEnabled += OnAutoPlatformEnabled;
-            _notifier.Reseted += OnBoostersReseted;
+            _notifier.Activated += OnBoosterActivated;
         }
 
         private void OnDisable()
         {
-            _notifier.AutoPlatformEnabled -= OnAutoPlatformEnabled;
-            _notifier.Reseted -= OnBoostersReseted;
+            _notifier.Activated -= OnBoosterActivated;
+        }
+
+        private void EnableAutoPlatform()
+        {
+            PlayerUtilities.CheckCoroutine(_flagChangingCoroutine, this);
+            _flagChangingCoroutine = StartCoroutine(FlagChanging());
+        }
+
+        private void ResetBoosters()
+        {
+            PlayerUtilities.CheckCoroutine(_flagChangingCoroutine, this);
+            IsAutomatic = false;
         }
 
         private IEnumerator FlagChanging()
@@ -35,16 +45,17 @@ namespace Controller
             IsAutomatic = false;
         }
 
-        private void OnAutoPlatformEnabled()
+        private void OnBoosterActivated(BoostersEnum type)
         {
-            PlayerUtilities.CheckCoroutine(_flagChangingCoroutine, this);
-            _flagChangingCoroutine = StartCoroutine(FlagChanging());
-        }
-
-        private void OnBoostersReseted()
-        {
-            PlayerUtilities.CheckCoroutine(_flagChangingCoroutine, this);
-            IsAutomatic = false;
+            switch (type)
+            {
+                case BoostersEnum.AutoPlatformEnabled:
+                    EnableAutoPlatform();
+                    break;
+                case BoostersEnum.Reseted:
+                    ResetBoosters();
+                    break;
+            }
         }
     }
 }

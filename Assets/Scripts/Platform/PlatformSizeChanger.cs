@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Base;
+using Boosters;
 using Controller;
 using UnityEngine;
 
@@ -13,20 +14,6 @@ namespace Platform
 
         public Action Changed;
 
-        protected override void OnEnable()
-        {
-            Notifier.PlatformSizeIncreased += OnSizeIncreased;
-            Notifier.PlatformSizeDecreased += OnSizeDecreased;
-            base.OnEnable();
-        }
-
-        protected override void OnDisable()
-        {
-            Notifier.PlatformSizeIncreased -= OnSizeIncreased;
-            Notifier.PlatformSizeDecreased -= OnSizeDecreased;
-            base.OnDisable();
-        }
-
         protected override void ChangeSize(Vector3 multiplier)
         {
             base.ChangeSize(multiplier);
@@ -38,6 +25,20 @@ namespace Platform
         {
             yield return _delay;
             Changed?.Invoke();
+        }
+
+        protected override void OnBoosterActivated(BoostersEnum type)
+        {
+            base.OnBoosterActivated(type);
+
+            if (type == BoostersEnum.PlatformSizeIncreased)
+            {
+                IncreaseSize();
+            }
+            else if (type == BoostersEnum.PlatformSizeDecreased)
+            {
+                DecreaseSize();
+            }
         }
     }
 }

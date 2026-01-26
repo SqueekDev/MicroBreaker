@@ -1,21 +1,22 @@
+using Boosters;
 using Controller;
 
 namespace Ball
 {
     public class BallSizeChanger : BaseSizeChanger
     {
-        protected override void OnEnable()
+        protected override void OnBoosterActivated(BoostersEnum type)
         {
-            Notifier.BallSizeIncreased += OnSizeIncreased;
-            Notifier.BallSizeDecreased += OnSizeDecreased;
-            base.OnEnable();
-        }
+            base.OnBoosterActivated(type);
 
-        protected override void OnDisable()
-        {
-            Notifier.BallSizeIncreased -= OnSizeIncreased;
-            Notifier.BallSizeDecreased -= OnSizeDecreased;
-            base.OnDisable();
+            if (type == BoostersEnum.BallSizeIncreased)
+            {
+                IncreaseSize();
+            }
+            else if (type == BoostersEnum.BallSizeDecreased)
+            {
+                DecreaseSize();
+            }
         }
     }
 }

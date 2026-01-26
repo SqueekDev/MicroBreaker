@@ -22,8 +22,7 @@ namespace Controller
         private void OnEnable()
         {
             SwitchOffBalls();
-            _notifier.MultiballEnabled += OnMultiballEnabled;
-            _notifier.Reseted += OnBoostersReseted;
+            _notifier.Activated += OnBoosterActivated;
 
             foreach (var ball in _balls)
             {
@@ -33,8 +32,7 @@ namespace Controller
 
         private void OnDisable()
         {
-            _notifier.MultiballEnabled -= OnMultiballEnabled;
-            _notifier.Reseted -= OnBoostersReseted;
+            _notifier.Activated -= OnBoosterActivated;
 
             foreach (var ball in _balls)
             {
@@ -112,14 +110,27 @@ namespace Controller
             InvokeCountChange();
         }
 
-        private void OnMultiballEnabled()
+        private void EnableMultiball()
         {
             ReleaseBalls();
         }
 
-        private void OnBoostersReseted()
+        private void ResetBoosters()
         {
             SwitchOffBalls();
+        }
+
+        private void OnBoosterActivated(BoostersEnum type)
+        {
+            switch (type)
+            {
+                case BoostersEnum.MultiballEnabled:
+                    EnableMultiball();
+                    break;
+                case BoostersEnum.Reseted:
+                    ResetBoosters();
+                    break;
+            }
         }
     }
 }

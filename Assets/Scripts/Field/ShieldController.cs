@@ -19,14 +19,24 @@ namespace Field
 
         private void OnEnable()
         {
-            _notifier.ShieldEnabled += OnShieldEnabled;
-            _notifier.Reseted += OnBoostersRestarted;
+            _notifier.Activated += OnBoosterActivated;
         }
 
         private void OnDisable()
         {
-            _notifier.ShieldEnabled -= OnShieldEnabled;
-            _notifier.Reseted -= OnBoostersRestarted;
+            _notifier.Activated -= OnBoosterActivated;
+        }
+
+        private void EnableShield()
+        {
+            PlayerUtilities.CheckCoroutine(_shieldCoroutine, this);
+            _shieldCoroutine = StartCoroutine(ShiledControlling());
+        }
+
+        private void ResetBoosters()
+        {
+            PlayerUtilities.CheckCoroutine(_shieldCoroutine, this);
+            _shield.gameObject.SetActive(false);
         }
 
         private IEnumerator ShiledControlling()
@@ -36,16 +46,17 @@ namespace Field
             _shield.gameObject.SetActive(false);
         }
 
-        private void OnShieldEnabled()
+        private void OnBoosterActivated(BoostersEnum type)
         {
-            PlayerUtilities.CheckCoroutine(_shieldCoroutine, this);
-            _shieldCoroutine = StartCoroutine(ShiledControlling());
-        }
-
-        private void OnBoostersRestarted()
-        {
-            PlayerUtilities.CheckCoroutine(_shieldCoroutine, this);
-            _shield.gameObject.SetActive(false);
+            switch (type)
+            {
+                case BoostersEnum.ShieldEnabled:
+                    EnableShield();
+                    break;
+                case BoostersEnum.Reseted:
+                    ResetBoosters();
+                    break;
+            }
         }
     }
 }

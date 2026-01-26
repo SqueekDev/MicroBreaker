@@ -24,14 +24,14 @@ namespace Controller
             }
         }
 
-        protected virtual void OnEnable()
+        private void OnEnable()
         {
-            _notifier.Reseted += OnReseted;
+            _notifier.Activated += OnBoosterActivated;
         }
 
-        protected virtual void OnDisable()
+        private void OnDisable()
         {
-            _notifier.Reseted -= OnReseted;
+            _notifier.Activated -= OnBoosterActivated;
         }
 
         protected virtual void ChangeSize(Vector3 multiplier)
@@ -42,12 +42,12 @@ namespace Controller
             }
         }
 
-        protected void OnSizeIncreased()
+        protected void IncreaseSize()
         {
             ChangeSize(_increasedSizeMultiplier);
         }
 
-        protected void OnSizeDecreased()
+        protected void DecreaseSize()
         {
             ChangeSize(_decreasedSizeMultiplier);
         }
@@ -55,6 +55,14 @@ namespace Controller
         private void OnReseted()
         {
             ChangeSize(Vector3.one);
+        }
+
+        protected virtual void OnBoosterActivated(BoostersEnum type)
+        {
+            if (type == BoostersEnum.Reseted)
+            {
+                OnReseted();
+            }
         }
     }
 }

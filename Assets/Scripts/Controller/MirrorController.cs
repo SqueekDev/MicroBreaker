@@ -15,23 +15,21 @@ namespace Controller
 
         private void OnEnable()
         {
-            _notifier.MirrorEnabled += OnMirrorEnabled;
-            _notifier.Reseted += OnBoostersReseted;
+            _notifier.Activated += OnBoosterActivated;
         }
 
         private void OnDisable()
         {
-            _notifier.MirrorEnabled -= OnMirrorEnabled;
-            _notifier.Reseted -= OnBoostersReseted;
+            _notifier.Activated -= OnBoosterActivated;
         }
 
-        private void OnMirrorEnabled()
+        private void EnableMirror()
         {
             PlayerUtilities.CheckCoroutine(_enablingCoroutine, this);
             _enablingCoroutine = StartCoroutine(Enabling());
         }
 
-        private void OnBoostersReseted()
+        private void ResetBoosters()
         {
             PlayerUtilities.CheckCoroutine(_enablingCoroutine, this);
             _platform.gameObject.SetActive(false);
@@ -42,6 +40,19 @@ namespace Controller
             _platform.gameObject.SetActive(true);
             yield return PlayerUtilities.BaseBoostersDelay;
             _platform.gameObject.SetActive(false);
+        }
+
+        private void OnBoosterActivated(BoostersEnum type)
+        {
+            switch (type)
+            {
+                case BoostersEnum.MirrorEnabled:
+                    EnableMirror();
+                    break;
+                case BoostersEnum.Reseted:
+                    ResetBoosters();
+                    break;
+            }
         }
     }
 }

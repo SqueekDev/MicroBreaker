@@ -47,8 +47,7 @@ namespace Controller
 
         private void OnEnable()
         {
-            _notifier.VisionFailureEnabled += OnVisionFailureEnabled;
-            _notifier.Reseted += OnBoostersReseted;
+            _notifier.Activated += OnBoosterActivated;
         }
 
         private void LateUpdate()
@@ -63,8 +62,7 @@ namespace Controller
 
         private void OnDisable()
         {
-            _notifier.VisionFailureEnabled -= OnVisionFailureEnabled;
-            _notifier.Reseted -= OnBoostersReseted;
+            _notifier.Activated -= OnBoosterActivated;
             _camera.DOKill();
         }
 
@@ -79,6 +77,20 @@ namespace Controller
             transform.rotation = Quaternion.Euler(rotation);
         }
 
+        private void EnableVisionFailure()
+        {
+            PlayerUtilities.CheckCoroutine(_shakingCoroutine, this);
+            _camera.DOKill();
+            _shakingCoroutine = StartCoroutine(Shaking());
+        }
+
+        private void ResetBoosters()
+        {
+            PlayerUtilities.CheckCoroutine(_shakingCoroutine, this);
+            _camera.DOKill();
+            _isShaking = false;
+        }
+
         private IEnumerator Shaking()
         {
             _isShaking = true;
@@ -88,18 +100,17 @@ namespace Controller
             _isShaking = false;
         }
 
-        private void OnVisionFailureEnabled()
+        private void OnBoosterActivated(BoostersEnum type)
         {
-            PlayerUtilities.CheckCoroutine(_shakingCoroutine, this);
-            _camera.DOKill();
-            _shakingCoroutine = StartCoroutine(Shaking());
-        }
-
-        private void OnBoostersReseted()
-        {
-            PlayerUtilities.CheckCoroutine(_shakingCoroutine, this);
-            _camera.DOKill();
-            _isShaking = false;
+            switch (type)
+            {
+                case BoostersEnum.VisionFailureEnabled:
+                    EnableVisionFailure();
+                    break;
+                case BoostersEnum.Reseted:
+                    ResetBoosters();
+                    break;
+            }
         }
     }
 }

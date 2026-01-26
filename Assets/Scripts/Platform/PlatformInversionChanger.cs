@@ -23,14 +23,24 @@ namespace Platform
 
         private void OnEnable()
         {
-            _notifier.InversionEnabled += OnInversionEnabled;
-            _notifier.Reseted += OnBoostersRestarted;
+            _notifier.Activated += OnBoosterActivated;
         }
 
         private void OnDisable()
         {
-            _notifier.InversionEnabled -= OnInversionEnabled;
-            _notifier.Reseted -= OnBoostersRestarted;
+            _notifier.Activated -= OnBoosterActivated;
+        }
+
+        private void EnableInversion()
+        {
+            PlayerUtilities.CheckCoroutine(_inversionCoroutine, this);
+            _inversionCoroutine = StartCoroutine(InversionEnabling());
+        }
+
+        private void ResetBoosters()
+        {
+            PlayerUtilities.CheckCoroutine(_inversionCoroutine, this);
+            InversionModifier = DefaultInversionModifier;
         }
 
         private IEnumerator InversionEnabling()
@@ -40,16 +50,17 @@ namespace Platform
             InversionModifier = DefaultInversionModifier;
         }
 
-        private void OnInversionEnabled()
+        private void OnBoosterActivated(BoostersEnum type)
         {
-            PlayerUtilities.CheckCoroutine(_inversionCoroutine, this);
-            _inversionCoroutine = StartCoroutine(InversionEnabling());
-        }
-
-        private void OnBoostersRestarted()
-        {
-            PlayerUtilities.CheckCoroutine(_inversionCoroutine, this);
-            InversionModifier = DefaultInversionModifier;
+            switch (type)
+            {
+                case BoostersEnum.InversionEnabled:
+                    EnableInversion();
+                    break;
+                case BoostersEnum.Reseted:
+                    ResetBoosters();
+                    break;
+            }
         }
     }
 }

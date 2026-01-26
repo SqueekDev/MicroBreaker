@@ -26,20 +26,30 @@ namespace Ball
 
         private void OnEnable()
         {
-            _notifier.BallSpeedIncreased += OnSpeedIncreased;
-            _notifier.Reseted += OnBoostersRestarted;
+            _notifier.Activated += OnBoosterActivated;
         }
 
         private void OnDisable()
         {
-            _notifier.BallSpeedIncreased -= OnSpeedIncreased;
-            _notifier.Reseted -= OnBoostersRestarted;
+            _notifier.Activated -= OnBoosterActivated;
         }
 
         private void ChangeSpeed(float targetSpeed)
         {
             CurrentBaseSpeed = targetSpeed;
             Changed?.Invoke();
+        }
+
+        private void StartChangingSpeed()
+        {
+            PlayerUtilities.CheckCoroutine(_speedChangingCoroutine, this);
+            _speedChangingCoroutine = StartCoroutine(SpeedChanging());
+        }
+
+        private void RestartBoosters()
+        {
+            PlayerUtilities.CheckCoroutine(_speedChangingCoroutine, this);
+            ChangeSpeed(_startSpeed);
         }
 
         private IEnumerator SpeedChanging()
@@ -49,16 +59,17 @@ namespace Ball
             ChangeSpeed(_startSpeed);
         }
 
-        private void OnSpeedIncreased()
+        private void OnBoosterActivated(BoostersEnum type)
         {
-            PlayerUtilities.CheckCoroutine(_speedChangingCoroutine, this);
-            _speedChangingCoroutine = StartCoroutine(SpeedChanging());
-        }
-
-        private void OnBoostersRestarted()
-        {
-            PlayerUtilities.CheckCoroutine(_speedChangingCoroutine, this);
-            ChangeSpeed(_startSpeed);
+            switch (type)
+            {
+                case BoostersEnum.BallSpeedIncreased:
+                    StartChangingSpeed();
+                    break;
+                case BoostersEnum.Reseted:
+                    RestartBoosters();
+                    break;
+            }
         }
     }
 }

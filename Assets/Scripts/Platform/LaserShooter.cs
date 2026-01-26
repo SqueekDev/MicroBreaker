@@ -20,14 +20,12 @@ namespace Platform
 
         private void OnEnable()
         {
-            _notifier.LaserEnabled += OnLaserEnabled;
-            _notifier.Reseted += OnBoostersReseted;
+            _notifier.Activated += OnBoosterActivated;
         }
 
         private void OnDisable()
         {
-            _notifier.LaserEnabled -= OnLaserEnabled;
-            _notifier.Reseted -= OnBoostersReseted;
+            _notifier.Activated -= OnBoosterActivated;
         }
 
         private LaserProjectile TryGetProjectile()
@@ -40,6 +38,18 @@ namespace Platform
             {
                 return null;
             }
+        }
+
+        private void EnableLaser()
+        {
+            PlayerUtilities.CheckCoroutine(_shootingCoroutine, this);
+            _shootingCoroutine = StartCoroutine(EnablingProjectiles());
+        }
+
+        private void ResetBoosters()
+        {
+            PlayerUtilities.CheckCoroutine(_shootingCoroutine, this);
+            _timer = 0;
         }
 
         private IEnumerator EnablingProjectiles()
@@ -65,16 +75,17 @@ namespace Platform
             }
         }
 
-        private void OnLaserEnabled()
+        private void OnBoosterActivated(BoostersEnum type)
         {
-            PlayerUtilities.CheckCoroutine(_shootingCoroutine, this);
-            _shootingCoroutine = StartCoroutine(EnablingProjectiles());
-        }
-
-        private void OnBoostersReseted()
-        {
-            PlayerUtilities.CheckCoroutine(_shootingCoroutine, this);
-            _timer = 0;
+            switch (type)
+            {
+                case BoostersEnum.LaserEnabled:
+                    EnableLaser();
+                    break;
+                case BoostersEnum.Reseted:
+                    ResetBoosters();
+                    break;
+            }
         }
     }
 }

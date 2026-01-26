@@ -118,7 +118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86950425f1fd474586b4bbf803b6120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isDestroyable: 0
+  _isFortified: 0
+  _isIndestructable: 1
 --- !u!1 &3849880528294127284
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,7 +217,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86950425f1fd474586b4bbf803b6120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isDestroyable: 1
+  _isFortified: 0
+  _isIndestructable: 0
 --- !u!65 &9052771969216204461
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -285,10 +287,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a69f742af4c842c41b3d84358149f071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _notifier: {fileID: 0}
   _baseBrick: {fileID: 8005673015857241580}
-  _destructibleBrick: {fileID: 8982699500494220119}
-  _undestructibleBrick: {fileID: 8617396728281132199}
-  _deadZone: {fileID: 0}
+  _zapBrick: {fileID: 8982699500494220119}
+  _steelBrick: {fileID: 8617396728281132199}
+  _levelController: {fileID: 0}
 --- !u!1 &7509021282170012068
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,7 +391,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86950425f1fd474586b4bbf803b6120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isDestroyable: 0
+  _isFortified: 1
+  _isIndestructable: 0
 --- !u!65 &7603153503822457372
 BoxCollider:
   m_ObjectHideFlags: 0

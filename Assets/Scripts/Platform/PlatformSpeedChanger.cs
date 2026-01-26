@@ -30,16 +30,30 @@ namespace Platform
 
         private void OnEnable()
         {
-            _notifier.PlatformFrosenEnabled += OnPlatformFrosen;
-            _notifier.PlatformSpeedDecreased += OnSpeedDecreased;
-            _notifier.Reseted += OnBoostersRestarted;
+            _notifier.Activated += OnBoosterActivated;
         }
 
         private void OnDisable()
         {
-            _notifier.PlatformFrosenEnabled -= OnPlatformFrosen;
-            _notifier.PlatformSpeedDecreased -= OnSpeedDecreased;
-            _notifier.Reseted -= OnBoostersRestarted;
+            _notifier.Activated -= OnBoosterActivated;
+        }
+
+        private void FreezePlatform()
+        {
+            PlayerUtilities.CheckCoroutine(_freezeCoroutine, this);
+            _freezeCoroutine = StartCoroutine(Freeze());
+        }
+
+        private void DecreaseSpeed()
+        {
+            PlayerUtilities.CheckCoroutine(_slowdownCoroutine, this);
+            _slowdownCoroutine = StartCoroutine(Slowdown());
+        }
+
+        private void ResetBoosters()
+        {
+            BaseSpeed = _startSpeed;
+            SpeedModifier = DefaultSpeedModifier;
         }
 
         private IEnumerator Slowdown()
@@ -56,22 +70,20 @@ namespace Platform
             BaseSpeed = _startSpeed;
         }
 
-        private void OnPlatformFrosen()
+        private void OnBoosterActivated(BoostersEnum type)
         {
-            PlayerUtilities.CheckCoroutine(_freezeCoroutine, this);
-            _freezeCoroutine = StartCoroutine(Freeze());
-        }
-
-        private void OnSpeedDecreased()
-        {
-            PlayerUtilities.CheckCoroutine(_slowdownCoroutine, this);
-            _slowdownCoroutine = StartCoroutine(Slowdown());
-        }
-
-        private void OnBoostersRestarted()
-        {
-            BaseSpeed = _startSpeed;
-            SpeedModifier = DefaultSpeedModifier;
+            switch (type)
+            {
+                case BoostersEnum.PlatformSpeedDecreased:
+                    DecreaseSpeed();
+                    break;
+                case BoostersEnum.PlatformFrozenEnabled:
+                    FreezePlatform();
+                    break;
+                case BoostersEnum.Reseted:
+                    ResetBoosters();
+                    break;
+            }
         }
     }
 }

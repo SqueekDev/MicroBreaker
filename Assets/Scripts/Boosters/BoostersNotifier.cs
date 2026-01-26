@@ -1,63 +1,73 @@
 using System;
 using System.Collections;
-using Base;
+using System.Collections.Generic;
 using Controller;
+using Platform;
 using UnityEngine;
 
 namespace Boosters
 {
     public class BoostersNotifier : MonoBehaviour
     {
-        [SerializeField] private TempLevelController _levelController;
-        private Coroutine _testCoroutine;
+        private const int RandomBoostersCount = 20;
 
-        public Action Reseted;
-        public Action BallSizeIncreased;
-        public Action BallSizeDecreased;
-        public Action PlatformSizeIncreased;
-        public Action PlatformSizeDecreased;
-        public Action LaserEnabled;
-        public Action MirrorEnabled;
-        public Action ShieldEnabled;
-        public Action PortalEnabled;
-        public Action MultiballEnabled;
-        public Action GravityEnabled;
-        public Action ZapBricksEnabled;
-        public Action BallSpeedIncreased;
-        public Action InversionEnabled;
-        public Action PlatformSpeedDecreased;
-        public Action SteelBricksEnabled;
-        public Action BricksFallEnabled;
-        public Action VisionFailureEnabled;
-        public Action PlatformFrosenEnabled;
-        public Action PowerPlatformEnabled;
-        public Action AutoPlatformEnabled;
+        [SerializeField] private TempLevelController _levelController;
+        [SerializeField] private List<BoostersCollector> _collectors;
+        [SerializeField] private BoostersEnum _type;
+        
+        public Action<BoostersEnum> Activated;
 
         private void OnEnable()
         {
+            foreach (var collector in _collectors)
+            {
+                collector.Picked += OnBoosterPicked;
+            }
+
             _levelController.Ended += OnLevelEnded;
         }
 
         private void Start()
         {
-            PlayerUtilities.CheckCoroutine(_testCoroutine, this);
-            _testCoroutine = StartCoroutine(Test());
+            StartCoroutine(TestCoroutine());
         }
 
         private void OnDisable()
         {
-            _levelController.Ended += OnLevelEnded;
+            foreach (var collector in _collectors)
+            {
+                collector.Picked -= OnBoosterPicked;
+            }
+
+            _levelController.Ended -= OnLevelEnded;
         }
 
-        private IEnumerator Test()
+        private IEnumerator TestCoroutine()
         {
-            VisionFailureEnabled?.Invoke();
             yield return new WaitForSeconds(2f);
+            Activated?.Invoke(_type);
+        }
+
+        private BoostersEnum GetRandomBooster()
+        {
+            int boosterNumber = UnityEngine.Random.Range(0, RandomBoostersCount);
+            BoostersEnum randomType = (BoostersEnum)boosterNumber;
+            return randomType;
+        }
+
+        private void OnBoosterPicked(BoostersEnum type)
+        {
+            if (type == BoostersEnum.Random)
+            {
+                type = GetRandomBooster();
+            }
+
+            Activated?.Invoke(type);
         }
 
         private void OnLevelEnded()
         {
-            Reseted?.Invoke();
+            Activated?.Invoke(BoostersEnum.Reseted);
         }
     }
 }

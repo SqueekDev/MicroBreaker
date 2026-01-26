@@ -17,14 +17,12 @@ namespace Controller
 
         private void OnEnable()
         {
-            _notifier.PortalEnabled += OnPortalEnabled;
-            _notifier.Reseted += OnBoostersRestarted;
+            _notifier.Activated += OnBoosterActivated;
         }
 
         private void OnDisable()
         {
-            _notifier.PortalEnabled -= OnPortalEnabled;
-            _notifier.Reseted -= OnBoostersRestarted;
+            _notifier.Activated -= OnBoosterActivated;
         }
 
         private void ChangePortalsState(bool isEnabled)
@@ -37,6 +35,18 @@ namespace Controller
             _deadZone.gameObject.SetActive(!isEnabled);
         }
 
+        private void EnablePortals()
+        {
+            PlayerUtilities.CheckCoroutine(_enablingCoroutine, this);
+            _enablingCoroutine = StartCoroutine(Enabling());
+        }
+
+        private void ResetBoosters()
+        {
+            PlayerUtilities.CheckCoroutine(_enablingCoroutine, this);
+            ChangePortalsState(false);
+        }
+
         private IEnumerator Enabling()
         {
             ChangePortalsState(true);
@@ -44,16 +54,17 @@ namespace Controller
             ChangePortalsState(false);
         }
 
-        private void OnPortalEnabled()
+        private void OnBoosterActivated(BoostersEnum type)
         {
-            PlayerUtilities.CheckCoroutine(_enablingCoroutine, this);
-            _enablingCoroutine = StartCoroutine(Enabling());
-        }
-
-        private void OnBoostersRestarted()
-        {
-            PlayerUtilities.CheckCoroutine(_enablingCoroutine, this);
-            ChangePortalsState(false);
+            switch (type)
+            {
+                case BoostersEnum.PortalEnabled:
+                    EnablePortals();
+                    break;
+                case BoostersEnum.Reseted:
+                    ResetBoosters();
+                    break;
+            }
         }
     }
 }

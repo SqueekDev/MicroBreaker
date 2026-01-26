@@ -21,14 +21,12 @@ namespace Controller
 
         private void OnEnable()
         {
-            _notifier.GravityEnabled += OnGravityEnabled;
-            _notifier.Reseted += OnBoostersReseted;
+            _notifier.Activated += OnBoosterActivated;
         }
 
         private void OnDisable()
         {
-            _notifier.GravityEnabled -= OnGravityEnabled;
-            _notifier.Reseted -= OnBoostersReseted;
+            _notifier.Activated -= OnBoosterActivated;
         }
 
         private void SwitchState(bool isEnabled)
@@ -39,6 +37,18 @@ namespace Controller
             }
         }
 
+        private void ResetBoosters()
+        {
+            PlayerUtilities.CheckCoroutine(_gravityCoroutine, this);
+            SwitchState(false);
+        }
+
+        private void EnableGravity()
+        {
+            PlayerUtilities.CheckCoroutine(_gravityCoroutine, this);
+            _gravityCoroutine = StartCoroutine(AtractorEnabling());
+        }
+
         private IEnumerator AtractorEnabling()
         {
             SwitchState(true);
@@ -46,16 +56,17 @@ namespace Controller
             SwitchState(false);
         }
 
-        private void OnBoostersReseted()
+        private void OnBoosterActivated(BoostersEnum type)
         {
-            PlayerUtilities.CheckCoroutine(_gravityCoroutine, this);
-            SwitchState(false);
-        }
-
-        private void OnGravityEnabled()
-        {
-            PlayerUtilities.CheckCoroutine(_gravityCoroutine, this);
-            _gravityCoroutine = StartCoroutine(AtractorEnabling());
+            switch (type)
+            {
+                case BoostersEnum.GravityEnabled:
+                    EnableGravity();
+                    break;
+                case BoostersEnum.Reseted:
+                    ResetBoosters();
+                    break;
+            }
         }
     }
 }

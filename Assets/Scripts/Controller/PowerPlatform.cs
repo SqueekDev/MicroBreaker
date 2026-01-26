@@ -15,14 +15,24 @@ namespace Controller
 
         private void OnEnable()
         {
-            _notifier.PowerPlatformEnabled += OnPowerPlatformEnabled;
-            _notifier.Reseted += OnBoostersReseted;
+            _notifier.Activated += OnBoosterActivated;
         }
 
         private void OnDisable()
         {
-            _notifier.PowerPlatformEnabled -= OnPowerPlatformEnabled;
-            _notifier.Reseted -= OnBoostersReseted;
+            _notifier.Activated -= OnBoosterActivated;
+        }
+
+        private void EnablePowerPlatform()
+        {
+            PlayerUtilities.CheckCoroutine(_enablingCorotine, this);
+            _enablingCorotine = StartCoroutine(Enabling());
+        }
+
+        private void ResetBoosters()
+        {
+            PlayerUtilities.CheckCoroutine(_enablingCorotine, this);
+            IsEnabled = false;
         }
 
         private IEnumerator Enabling()
@@ -32,16 +42,17 @@ namespace Controller
             IsEnabled = false;
         }
 
-        private void OnPowerPlatformEnabled()
+        private void OnBoosterActivated(BoostersEnum type)
         {
-            PlayerUtilities.CheckCoroutine(_enablingCorotine, this);
-            _enablingCorotine = StartCoroutine(Enabling());
-        }
-
-        private void OnBoostersReseted()
-        {
-            PlayerUtilities.CheckCoroutine(_enablingCorotine, this);
-            IsEnabled = false;
+            switch (type)
+            {
+                case BoostersEnum.PowerPlatformEnabled:
+                    EnablePowerPlatform();
+                    break;
+                case BoostersEnum.Reseted:
+                    ResetBoosters();
+                    break;
+            }
         }
     }
 }
