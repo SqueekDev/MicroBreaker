@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Base;
 using Boosters;
@@ -17,6 +18,8 @@ namespace Controller
         private Coroutine _changingCoroutine;
         private Brick _activeBrick;
         private bool _isDestroyed = false;
+
+        public Action<Brick> Destroyed;
 
         private void Awake()
         {
@@ -79,18 +82,19 @@ namespace Controller
             ChangeBrick(_baseBrick, _activeBrick.transform);
         }
 
-        protected virtual void OnBrickTriggered()
-        {
-            PlayerUtilities.CheckCoroutine(_changingCoroutine, this);
-            DestroyActiveBrick();
-            _isDestroyed = true;
-        }
-
         protected void OnLevelStarted()
         {
             PlayerUtilities.CheckCoroutine(_changingCoroutine, this);
             _isDestroyed = false;
             ChangeBrick(_baseBrick, transform);
+        }
+
+        private void OnBrickTriggered()
+        {
+            PlayerUtilities.CheckCoroutine(_changingCoroutine, this);
+            DestroyActiveBrick();
+            _isDestroyed = true;
+            Destroyed?.Invoke(_activeBrick);
         }
 
         private void OnBoosterActivated(BoostersEnum type)

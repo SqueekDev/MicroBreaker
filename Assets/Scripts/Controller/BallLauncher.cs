@@ -38,13 +38,8 @@ namespace Controller
             {
                 _ball.transform.parent = null;
                 _isReleased = true;
-
-                if (_ball.TryGetComponent(out Rigidbody rigidbody))
-                {
-                    rigidbody.isKinematic = false;
-                    rigidbody.AddForce(Vector3.forward, ForceMode.Impulse);
-                }
-
+                _ball.Rigidbody.isKinematic = false;
+                _ball.Rigidbody.AddForce(Vector3.right, ForceMode.Impulse);
                 Released?.Invoke();
             }
         }
@@ -56,13 +51,8 @@ namespace Controller
             _ball.gameObject.SetActive(true);
             _ball.transform.SetParent(_startPoint.transform);
             _ball.transform.position = _startPoint.transform.position;
-
-            if (_ball.TryGetComponent(out Rigidbody rigidbody))
-            {
-                rigidbody.isKinematic = true;
-                rigidbody.velocity = Vector3.zero;
-            }
-
+            _ball.Rigidbody.velocity = Vector3.zero;
+            _ball.Rigidbody.isKinematic = true;
             Restarted?.Invoke();
         }
 

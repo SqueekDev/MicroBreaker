@@ -14,20 +14,23 @@ namespace Ball
         private const float SpeedModifier = 1.5f;
         private const float MaxBounceAngle = 30f;
         private const float MinContactDistanceRatio = 0.7f;
+        private const float MinZVelocity = 0.1f;
+        private const float VelocityZCorrectionForce = 0.2f;
 
         [SerializeField] private BallLauncher _ballBeater;
         [SerializeField] private BallSpeedController _speedController;
         [SerializeField] private PowerPlatform _powerPlatformController;
 
-        private Rigidbody _rigidbody;
         private float _currentSpeed;
         private bool _isReleased = false;
 
         public Action<BallMover> Destroyed;
 
+        public Rigidbody Rigidbody { get; private set; }
+
         private void Awake()
         {
-            _rigidbody = GetComponent<Rigidbody>();
+            Rigidbody = GetComponent<Rigidbody>();
         }
 
         private void OnEnable()
@@ -41,9 +44,14 @@ namespace Ball
 
         private void FixedUpdate()
         {
-            if (_isReleased && _rigidbody.isKinematic == false)
+            if (_isReleased && Rigidbody.isKinematic == false)
             {
-                _rigidbody.velocity = _rigidbody.velocity.normalized * _currentSpeed;
+                if (Mathf.Abs(Rigidbody.velocity.z) < MinZVelocity)
+                {
+                    CorrectZVelocity();
+                }
+
+                Rigidbody.velocity = Rigidbody.velocity.normalized * _currentSpeed;
             }
         }
 
@@ -87,6 +95,13 @@ namespace Ball
             }
         }
 
+        private void CorrectZVelocity()
+        {
+            float velocityZ = UnityEngine.Random.Range(-VelocityZCorrectionForce, VelocityZCorrectionForce);
+            Vector3 correctionForce = new Vector3(Rigidbody.velocity.x, Rigidbody.velocity.y, velocityZ);
+            Rigidbody.AddForce(correctionForce, ForceMode.Impulse);
+        }
+
         private void ChangeBallDirection(Collision collision)
         {
             if (collision.relativeVelocity.z > _currentSpeed * SecondSpeedBorderModifier && _currentSpeed < _speedController.MaxSpeed)
@@ -94,20 +109,20 @@ namespace Ball
                 _currentSpeed = _speedController.CurrentBaseSpeed * SpeedModifier;
             }
 
-            _rigidbody.velocity = collision.rigidbody.velocity.normalized;
+            Rigidbody.velocity = collision.rigidbody.velocity.normalized;
         }
 
         private void PlatformCornersCorrection(Collision collision)
         {
             Collider platform = collision.collider;
-            Vector3 direction = _rigidbody.velocity.normalized;
+            Vector3 direction = Rigidbody.velocity.normalized;
             Vector3 contactDistance = platform.bounds.center - transform.position;
             float contactDistanceRatio = Mathf.Abs(contactDistance.x / (platform.bounds.center.x - platform.bounds.min.x));
 
             if (contactDistanceRatio >= MinContactDistanceRatio)
             {
                 float bounceAngle = (contactDistance.x / platform.bounds.size.x) * MaxBounceAngle;
-                _rigidbody.velocity = Quaternion.AngleAxis(bounceAngle, Vector3.down) * direction;
+                Rigidbody.velocity = Quaternion.AngleAxis(bounceAngle, Vector3.down) * direction;
             }
         }
 

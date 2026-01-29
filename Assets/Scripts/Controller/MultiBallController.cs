@@ -53,12 +53,8 @@ namespace Controller
                 ball.gameObject.SetActive(true);
                 ball.transform.parent = null;
                 Vector3 direction = GetDirection();
-
-                if (ball.TryGetComponent(out Rigidbody rigidbody))
-                {
-                    rigidbody.velocity = Vector3.zero;
-                    rigidbody.AddForce(direction, ForceMode.Impulse);
-                }
+                ball.Rigidbody.velocity = Vector3.zero;
+                ball.Rigidbody.AddForce(direction, ForceMode.Impulse);
             }
 
             InvokeCountChange();

@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using Controller;
 using Platform;
@@ -9,11 +8,10 @@ namespace Boosters
 {
     public class BoostersNotifier : MonoBehaviour
     {
-        private const int RandomBoostersCount = 20;
+        private const int RandomBoostersCount = 21;
 
         [SerializeField] private TempLevelController _levelController;
         [SerializeField] private List<BoostersCollector> _collectors;
-        [SerializeField] private BoostersEnum _type;
         
         public Action<BoostersEnum> Activated;
 
@@ -27,11 +25,6 @@ namespace Boosters
             _levelController.Ended += OnLevelEnded;
         }
 
-        private void Start()
-        {
-            StartCoroutine(TestCoroutine());
-        }
-
         private void OnDisable()
         {
             foreach (var collector in _collectors)
@@ -40,12 +33,6 @@ namespace Boosters
             }
 
             _levelController.Ended -= OnLevelEnded;
-        }
-
-        private IEnumerator TestCoroutine()
-        {
-            yield return new WaitForSeconds(2f);
-            Activated?.Invoke(_type);
         }
 
         private BoostersEnum GetRandomBooster()
