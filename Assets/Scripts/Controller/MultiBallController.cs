@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Ball;
 using Boosters;
+using Data;
 using UnityEngine;
 
 namespace Controller

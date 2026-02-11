@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Ball;
 using Base;
 using Boosters;
+using Data;
 using UnityEngine;
 
 namespace Controller

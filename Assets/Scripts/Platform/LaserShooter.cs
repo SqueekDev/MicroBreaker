@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Base;
 using Boosters;
+using Data;
 using UnityEngine;
 
 namespace Platform

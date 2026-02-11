@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
 using Base;
-using Boosters;
 using Controller;
+using Data;
 using UnityEngine;
 
 namespace Platform

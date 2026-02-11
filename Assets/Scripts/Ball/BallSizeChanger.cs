@@ -1,5 +1,5 @@
-using Boosters;
 using Controller;
+using Data;
 
 namespace Ball
 {

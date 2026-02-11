@@ -39,7 +39,7 @@ namespace Controller
                 _ball.transform.parent = null;
                 _isReleased = true;
                 _ball.Rigidbody.isKinematic = false;
-                _ball.Rigidbody.AddForce(Vector3.right, ForceMode.Impulse);
+                _ball.Rigidbody.AddForce(Vector3.forward, ForceMode.Impulse);
                 Released?.Invoke();
             }
         }

@@ -1,6 +1,7 @@
 using System;
 using Boosters;
 using Controller;
+using Data;
 using UnityEngine;
 
 namespace Platform

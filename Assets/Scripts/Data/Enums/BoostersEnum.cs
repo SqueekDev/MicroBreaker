@@ -1,0 +1,29 @@
+namespace Data
+{
+    public enum BoostersEnum
+    {
+        BallSizeIncreased,
+        PlatformSizeIncreased,
+        LaserEnabled,
+        MirrorEnabled,
+        ShieldEnabled,
+        MultiballEnabled,
+        PortalEnabled,
+        GravityEnabled,
+        ZapBricksEnabled,
+        BonusTarget,
+        BallSizeDecreased,
+        PlatformSizeDecreased,
+        BallSpeedIncreased,
+        InversionEnabled,
+        PlatformSpeedDecreased,
+        SteelBricksEnabled,
+        BricksFallEnabled,
+        VisionFailureEnabled,
+        PlatformFrozenEnabled,
+        PowerPlatformEnabled,
+        AutoPlatformEnabled,
+        Reseted,
+        Random
+    }
+}
