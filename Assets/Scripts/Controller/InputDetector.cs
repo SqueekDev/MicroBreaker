@@ -24,7 +24,6 @@ namespace Controller
                 {
                     Detected?.Invoke(_touch);
                 }
-
             }
         }
     }

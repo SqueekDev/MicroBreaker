@@ -1,6 +1,6 @@
 using Ball;
+using Base;
 using Controller;
-using Field;
 using UnityEngine;
 
 namespace Platform
@@ -13,10 +13,10 @@ namespace Platform
         [SerializeField] private MainBallChanger _mainBallChanger;
         [SerializeField] private PlatformSpeedChanger _speedChanger;
         [SerializeField] private PlatformSizeChanger _sizeChanger;
-        [SerializeField] private PlatformMoveBorder _topBorder;
-        [SerializeField] private PlatformMoveBorder _bottomBorder;
-        [SerializeField] private PlatformMoveBorder _leftBorder;
-        [SerializeField] private PlatformMoveBorder _rightBorder;
+        [SerializeField] private MoveBorder _topBorder;
+        [SerializeField] private MoveBorder _bottomBorder;
+        [SerializeField] private MoveBorder _leftBorder;
+        [SerializeField] private MoveBorder _rightBorder;
 
         private BallMover _ball;
         private Rigidbody _rigidbody;

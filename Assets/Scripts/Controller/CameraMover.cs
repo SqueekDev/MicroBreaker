@@ -16,8 +16,8 @@ namespace Controller
 
         [SerializeField] private BoostersNotifier _notifier;
         [SerializeField] private PlatformMover _platform;
-        [SerializeField] private PlatformMoveBorder _rightBorder;
-        [SerializeField] private PlatformMoveBorder _leftBorder;
+        [SerializeField] private MoveBorder _rightBorder;
+        [SerializeField] private MoveBorder _leftBorder;
         [SerializeField] private float _smoothTime;
         [SerializeField] private float _targetShakePositionX;
         [SerializeField] private float _targetShakeRotationZ;
