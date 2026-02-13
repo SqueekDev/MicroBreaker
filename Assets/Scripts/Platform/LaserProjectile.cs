@@ -40,7 +40,7 @@ namespace Platform
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out Brick brick) || other.TryGetComponent(out FieldBorder border))
+            if (other.TryGetComponent(out BaseBrick brick) || other.TryGetComponent(out FieldBorder border))
             {
                 gameObject.SetActive(false);
             }

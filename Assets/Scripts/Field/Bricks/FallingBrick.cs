@@ -18,7 +18,7 @@ namespace Field
             _changer.Destroyed -= OnBrickDestroyed;
         }
 
-        private void OnBrickDestroyed(Brick brick)
+        private void OnBrickDestroyed(BaseBrick brick)
         {
             gameObject.SetActive(false);
         }

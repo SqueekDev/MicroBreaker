@@ -115,11 +115,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3215858190602180500}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a86950425f1fd474586b4bbf803b6120, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b2f9c65f5c2fee4e84fd65ad5e000e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isFortified: 0
-  _isIndestructable: 1
 --- !u!1 &3292994968128565575
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,11 +212,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3292994968128565575}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a86950425f1fd474586b4bbf803b6120, type: 3}
+  m_Script: {fileID: 11500000, guid: bb6b6fef72a67e44faa24789d102ce8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _isFortified: 0
-  _isIndestructable: 0
 --- !u!65 &7313701402065721694
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -251,8 +248,8 @@ GameObject:
   - component: {fileID: 3470958806602801403}
   - component: {fileID: 541708695778488158}
   - component: {fileID: 2333003667911547796}
-  - component: {fileID: 6494467146646484006}
   - component: {fileID: 5644510839255221930}
+  - component: {fileID: 4769227205264331397}
   m_Layer: 0
   m_Name: Base
   m_TagString: Untagged
@@ -304,7 +301,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 9d914d1bc22b877419c2bfabab8897ec, type: 2}
-  - {fileID: 2100000, guid: 054792fd6a6d9394c9003508b4a87852, type: 2}
+  - {fileID: 2100000, guid: bd0ff3bd31f86f94494cea0870fbbec1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -326,20 +323,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6494467146646484006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4278562623636814401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a86950425f1fd474586b4bbf803b6120, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isFortified: 1
-  _isIndestructable: 0
 --- !u!65 &5644510839255221930
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -361,6 +344,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4769227205264331397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4278562623636814401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb6b6fef72a67e44faa24789d102ce8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isFortified: 1
 --- !u!1 &5000933887499354046
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,7 +405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _notifier: {fileID: 0}
-  _baseBrick: {fileID: 6494467146646484006}
+  _baseBrick: {fileID: 4769227205264331397}
   _zapBrick: {fileID: 7239080184971852964}
   _steelBrick: {fileID: 5748004305778793000}
   _levelController: {fileID: 0}

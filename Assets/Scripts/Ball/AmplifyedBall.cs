@@ -32,7 +32,7 @@ namespace Ball
                     _amplifyingCoroutine = StartCoroutine(Amplifying());
                 }
             }
-            else if (collision.transform.TryGetComponent(out Brick brick))
+            else if (collision.transform.TryGetComponent(out BaseBrick brick))
             {
                 _currentAmplifyingTime = CountdownDelay;
             }

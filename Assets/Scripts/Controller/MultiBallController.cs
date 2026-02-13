@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Ball;
 using Boosters;
 using Data;
+using Level;
 using UnityEngine;
 
 namespace Controller
@@ -12,7 +13,7 @@ namespace Controller
         private const float BoundValue = 1f;
 
         [SerializeField] private BoostersNotifier _notifier;
-        [SerializeField] private TempLevelController _levelController;
+        [SerializeField] private LevelStarter _levelController;
         [SerializeField] private List<BallMover> _balls;
         [SerializeField] private MainBallChanger _mainBallChanger;
 

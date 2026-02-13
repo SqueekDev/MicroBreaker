@@ -50,7 +50,7 @@ MonoBehaviour:
   _notifier: {fileID: 0}
   _baseBrick: {fileID: 6612748653124126657}
   _zapBrick: {fileID: 1516748612376952495}
-  _steelBrick: {fileID: 590476231865642737}
+  _steelBrick: {fileID: 5299879207997585509}
   _levelController: {fileID: 0}
 --- !u!1 &6686124404829074252
 GameObject:
@@ -146,11 +146,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6686124404829074252}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a86950425f1fd474586b4bbf803b6120, type: 3}
+  m_Script: {fileID: 11500000, guid: bb6b6fef72a67e44faa24789d102ce8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _value: 0
   _isFortified: 0
-  _isIndestructable: 0
 --- !u!65 &1442716956858571605
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -266,11 +266,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6788790029089620057}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a86950425f1fd474586b4bbf803b6120, type: 3}
+  m_Script: {fileID: 11500000, guid: bb6b6fef72a67e44faa24789d102ce8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _value: 10
   _isFortified: 0
-  _isIndestructable: 0
 --- !u!65 &628398418566808074
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: 1942353445669281302}
   - component: {fileID: 5803172095702178678}
   - component: {fileID: 2565257789999844180}
-  - component: {fileID: 590476231865642737}
+  - component: {fileID: 5299879207997585509}
   m_Layer: 0
   m_Name: SteelCube
   m_TagString: Untagged
@@ -398,7 +398,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1.0000001}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &590476231865642737
+--- !u!114 &5299879207997585509
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -407,8 +407,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7734313933962109773}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a86950425f1fd474586b4bbf803b6120, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b2f9c65f5c2fee4e84fd65ad5e000e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isFortified: 0
-  _isIndestructable: 1
+  _value: 0

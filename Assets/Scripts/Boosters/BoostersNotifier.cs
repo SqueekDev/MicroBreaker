@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Controller;
 using Data;
+using Level;
 using Platform;
 using UnityEngine;
 
@@ -11,7 +11,8 @@ namespace Boosters
     {
         private const int RandomBoostersCount = 21;
 
-        [SerializeField] private TempLevelController _levelController;
+        [SerializeField] private LevelStarter _levelController;
+        [SerializeField] private LevelFinisher _levelFinisher;
         [SerializeField] private List<BoostersCollector> _collectors;
         
         public Action<BoostersEnum> Activated;
@@ -23,7 +24,7 @@ namespace Boosters
                 collector.Picked += OnBoosterPicked;
             }
 
-            _levelController.Ended += OnLevelEnded;
+            _levelFinisher.Finished += OnLevelEnded;
         }
 
         private void OnDisable()
@@ -33,7 +34,7 @@ namespace Boosters
                 collector.Picked -= OnBoosterPicked;
             }
 
-            _levelController.Ended -= OnLevelEnded;
+            _levelFinisher.Finished -= OnLevelEnded;
         }
 
         private BoostersEnum GetRandomBooster()

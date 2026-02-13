@@ -1,6 +1,7 @@
 using System;
 using Field;
 using Platform;
+using Level;
 using UnityEngine;
 
 namespace Controller
@@ -9,7 +10,7 @@ namespace Controller
     {
         [SerializeField] private InputDetector _inputDetector;
         [SerializeField] private PlatformInversionChanger _inversionChanger;
-        [SerializeField] private TempLevelController _levelController;
+        [SerializeField] private LevelStarter _levelController;
         [SerializeField] private StartPlatformPosition _startPosition;
         [SerializeField] private LayerMask _inputMask;
         [SerializeField] private float _zOffset;

@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using Controller;
+using Boosters;
 using Field;
 using UnityEngine;
 
-namespace Boosters
+namespace Level
 {
     public class BoosterSpawner : MonoBehaviour
     {
@@ -11,30 +11,22 @@ namespace Boosters
         private const int SpawnValue = 25;
         private const int GuaranteedBossterSpawnCount = 4;
 
-        [SerializeField] private TempLevelController _levelController;
+        [SerializeField] private LevelStarter _levelController;
         [SerializeField] private float _force;
         [SerializeField] private List<Booster> _boosters;
-        [SerializeField] private List<BricksChanger> _bricks;
+        [SerializeField] private BricksActionsInvoker _invoker;
 
         private int _counter = 0;
 
         private void OnEnable()
         {
-            foreach (var brick in _bricks)
-            {
-                brick.Destroyed += OnBrickDestroyed;
-            }
-
+            _invoker.SpawableDestroyed += OnBrickDestroyed;
             _levelController.Started += OnLevelStarted;
         }
 
         private void OnDisable()
         {
-            foreach (var brick in _bricks)
-            {
-                brick.Destroyed -= OnBrickDestroyed;
-            }
-
+            _invoker.SpawableDestroyed -= OnBrickDestroyed;
             _levelController.Started -= OnLevelStarted;
         }
 
@@ -73,7 +65,7 @@ namespace Boosters
             return isSpawning;
         }
 
-        private void OnBrickDestroyed(Brick brick)
+        private void OnBrickDestroyed(BaseBrick brick)
         {
             bool isSpawning = GetSpawnState();
 

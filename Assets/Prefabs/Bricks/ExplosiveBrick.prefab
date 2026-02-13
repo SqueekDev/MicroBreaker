@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 6272082581759070565}
   - component: {fileID: 9054603968390978321}
   m_Layer: 0
-  m_Name: FortifiedCube
+  m_Name: ExplosiveBrick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -354,7 +354,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 7f037ffb89d811c4bbb36e73a092c29f, type: 2}
-  - {fileID: 2100000, guid: bd0ff3bd31f86f94494cea0870fbbec1, type: 2}
+  - {fileID: 2100000, guid: c48a4a634434c6f4b8a23099bdf472b8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -385,10 +385,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7509021282170012068}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb6b6fef72a67e44faa24789d102ce8f, type: 3}
+  m_Script: {fileID: 11500000, guid: 8561dc828522bf34ab6f5e0516af8735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isFortified: 1
+  _explodeRadius: 1.5
 --- !u!65 &7603153503822457372
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ namespace Platform
     public class PlatformMover : MonoBehaviour
     {
         [SerializeField] private PlatformMoveTargetSetter _targetSetter;
-        [SerializeField] private AutoPlatformController _autoPlatformController;
+        [SerializeField] private AutoPlatformEnabler _autoPlatformController;
         [SerializeField] private MainBallChanger _mainBallChanger;
         [SerializeField] private PlatformSpeedChanger _speedChanger;
         [SerializeField] private PlatformSizeChanger _sizeChanger;

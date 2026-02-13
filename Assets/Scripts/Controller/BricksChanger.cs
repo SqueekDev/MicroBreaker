@@ -4,6 +4,7 @@ using Base;
 using Boosters;
 using Data;
 using Field;
+using Level;
 using UnityEngine;
 
 namespace Controller
@@ -11,16 +12,16 @@ namespace Controller
     public class BricksChanger : PoolObject
     {
         [SerializeField] private BoostersNotifier _notifier;
-        [SerializeField] private Brick _baseBrick;
-        [SerializeField] private Brick _zapBrick;
-        [SerializeField] private Brick _steelBrick;
-        [SerializeField] private TempLevelController _levelController;
+        [SerializeField] private BaseDestructableBrick _baseBrick;
+        [SerializeField] private BaseDestructableBrick _zapBrick;
+        [SerializeField] private BaseBrick _steelBrick;
+        [SerializeField] private LevelStarter _levelController;
 
         private Coroutine _changingCoroutine;
-        private Brick _activeBrick;
+        private BaseBrick _activeBrick;
         private bool _isDestroyed = false;
 
-        public Action<Brick> Destroyed;
+        public Action<BaseBrick> Destroyed;
 
         private void Awake()
         {
@@ -31,29 +32,26 @@ namespace Controller
         {
             _levelController.Started += OnLevelStarted;
             _notifier.Activated += OnBoosterActivated;
+            _baseBrick.Triggered += OnBrickTriggered;
+            _zapBrick.Triggered += OnBrickTriggered;
         }
 
         private void OnDisable()
         {
             _levelController.Started -= OnLevelStarted;
             _notifier.Activated -= OnBoosterActivated;
+            _baseBrick.Triggered -= OnBrickTriggered;
+            _zapBrick.Triggered -= OnBrickTriggered;
         }
 
-        private void DestroyActiveBrick()
-        {
-            _activeBrick.Triggered -= OnBrickTriggered;
-            _activeBrick.gameObject.SetActive(false);
-        }
-
-        private void ChangeBrick(Brick brick, Transform target)
+        private void ChangeBrick(BaseBrick brick, Transform target)
         {
             if (_isDestroyed == false)
             {
-                DestroyActiveBrick();
+                _activeBrick.gameObject.SetActive(false);
                 brick.transform.position = target.position;
                 brick.transform.rotation = target.rotation;
                 brick.gameObject.SetActive(true);
-                brick.Triggered += OnBrickTriggered;
                 _activeBrick = brick;
             }
         }
@@ -76,7 +74,7 @@ namespace Controller
             ChangeBrick(_baseBrick, _activeBrick.transform);
         }
 
-        private IEnumerator Changing(Brick brick, Transform target)
+        private IEnumerator Changing(BaseBrick brick, Transform target)
         {
             ChangeBrick(brick, target);
             yield return PlayerUtilities.BaseBoostersDelay;
@@ -93,7 +91,7 @@ namespace Controller
         private void OnBrickTriggered()
         {
             PlayerUtilities.CheckCoroutine(_changingCoroutine, this);
-            DestroyActiveBrick();
+            _activeBrick.gameObject.SetActive(false);
             _isDestroyed = true;
             Destroyed?.Invoke(_activeBrick);
         }

@@ -20,6 +20,7 @@ namespace MainMenu
         private void Awake()
         {
             _camera = Camera.main;
+            Time.timeScale = 1;
         }
 
         private void OnEnable()

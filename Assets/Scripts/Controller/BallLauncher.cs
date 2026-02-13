@@ -1,6 +1,7 @@
 using System;
 using Ball;
 using Field;
+using Level;
 using UnityEngine;
 
 namespace Controller
@@ -9,7 +10,7 @@ namespace Controller
     {
         [SerializeField] private InputDetector _inputDetector;
         [SerializeField] private MainBallChanger _mainBallChanger;
-        [SerializeField] private TempLevelController _levelController;
+        [SerializeField] private LevelStarter _levelController;
         [SerializeField] private BallStartPoint _startPoint;
 
         private bool _isReleased = false;

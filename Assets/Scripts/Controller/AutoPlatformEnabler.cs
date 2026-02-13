@@ -1,16 +1,20 @@
 using System.Collections;
+using System.Collections.Generic;
 using Base;
 using Boosters;
 using Data;
+using Platform;
 using UnityEngine;
 
 namespace Controller
 {
-    public class AutoPlatformController : MonoBehaviour
+    public class AutoPlatformEnabler : MonoBehaviour
     {
         private const float DurationTime = 3f;
 
         [SerializeField] private BoostersNotifier _notifier;
+        [SerializeField] private List<BoostersCollector> _boostersCollectors;
+        [SerializeField] private List<FragmentsCollector> _fragmentsCollectors;
 
         private Coroutine _flagChangingCoroutine;
         private WaitForSeconds _duration = new WaitForSeconds(DurationTime);
@@ -37,13 +41,29 @@ namespace Controller
         {
             PlayerUtilities.CheckCoroutine(_flagChangingCoroutine, this);
             IsAutomatic = false;
+            SetCollectorsState(true);
+        }
+
+        private void SetCollectorsState(bool state)
+        {
+            foreach (var item in _boostersCollectors)
+            {
+                item.enabled = state;
+            }
+
+            foreach (var item in _fragmentsCollectors)
+            {
+                item.enabled = state;
+            }
         }
 
         private IEnumerator FlagChanging()
         {
             IsAutomatic = true;
+            SetCollectorsState(false);
             yield return _duration;
             IsAutomatic = false;
+            SetCollectorsState(true);
         }
 
         private void OnBoosterActivated(BoostersEnum type)

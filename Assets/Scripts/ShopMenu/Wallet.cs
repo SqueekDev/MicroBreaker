@@ -13,7 +13,6 @@ namespace ShopMenu
         private void Start()
         {
             Money = PlayerPrefs.GetInt(PlayerPrefsKeys.Money, 0);
-            AddMoney(20000);
             AmountChanged?.Invoke(Money);
         }
 

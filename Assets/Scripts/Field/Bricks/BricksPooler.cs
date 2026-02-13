@@ -1,12 +1,12 @@
 using Base;
-using Controller;
+using Level;
 using UnityEngine;
 
 namespace Field
 {
     public class BricksPooler : ObjectPooler
     {
-        [SerializeField] private TempLevelController _levelController;
+        [SerializeField] private LevelStarter _levelController;
 
         private void OnEnable()
         {
