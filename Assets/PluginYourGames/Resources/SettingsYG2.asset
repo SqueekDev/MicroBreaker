@@ -12,17 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efa747916aa66674d96ea40ca8a480b2, type: 3}
   m_Name: SettingsYG2
   m_EditorClassIdentifier: 
-  Authorization:
-    playerPhotoSize: 1
-    authorized: 0
-    playerName: Player current
-    uniqueID: 000
-    playerPhoto: demo image
-    payingStatus: 0
   Storage:
     saveLocal: 0
     saveCloud: 0
     flush: 0
+    labelAdvSimLabel: 0
   Basic:
     platform: {fileID: 11400000, guid: fabe82a4ab034324eb452cc7109f6d19, type: 2}
     autoApplySettings: 1
@@ -31,6 +25,7 @@ MonoBehaviour:
     autoGRA: 1
     logInEditor: 1
     archivingBuild: 1
+    autoDefineSymbols: 1
     syncInitSDK: 0
     loadSceneIfSDKLate: 0
     loadSceneIndex: 0
