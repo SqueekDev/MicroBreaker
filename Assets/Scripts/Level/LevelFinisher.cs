@@ -10,7 +10,7 @@ namespace Level
     {
         [SerializeField] private GamePanel _losePanel;
         [SerializeField] private GamePanel _winPanel;
-        [SerializeField] private MultiBallController _multiBallController;
+        [SerializeField] private MultiBallEnabler _multiBallController;
         [SerializeField] private DestroyedBricksCounter _counter;
 
         public Action Finished;

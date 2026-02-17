@@ -6,7 +6,7 @@ namespace ShopMenu
 {
     public class CloseShopButton : GameButton
     {
-        [SerializeField] private ShopPanel _shopPanel;
+        [SerializeField] private InvokingPanel _shopPanel;
 
         public Action Clicked;
 

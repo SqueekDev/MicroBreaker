@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
-using Data;
 using Field;
 using Platform;
 using UnityEngine;
@@ -9,14 +7,12 @@ namespace Level
 {
     public class LevelScoreCounter : MonoBehaviour
     {
-        
-
-        [SerializeField] private LevelsEnum _currentLevel;
+        [SerializeField] private LevelStateChanger _levelStateChanger;
         [SerializeField] private List<FragmentsCollector> _fragmentsCollectors;
+        [SerializeField] private List<BonusBrick> _bonusBricks;
         [SerializeField] private BricksActionsInvoker _bricksInvoker;
         [SerializeField] private DestroyedBricksCounter _destroyedBricksCounter;
-
-        private int _hightScore;
+        [SerializeField] private LevelFinisher _levelFinisher;
 
         public bool IsBeated { get; private set; }
         public int Score { get; private set; }
@@ -29,13 +25,13 @@ namespace Level
                 item.Picked += OnFragmentPicked;
             }
 
-            _bricksInvoker.Smashed += OnBrickSmashed;
-            _destroyedBricksCounter.AllTargetBricksDestroyed += OnAllTargetBricksDestroyed;
-        }
+            foreach (var item in _bonusBricks)
+            {
+                item.Destroyed += OnBonusBrickDestroyed;
+            }
 
-        private void Start()
-        {
-            LoadLevelStatus();
+            _bricksInvoker.Smashed += OnBrickSmashed;
+            _levelFinisher.Finished += OnLevelFinished;
         }
 
         private void OnDisable()
@@ -45,21 +41,19 @@ namespace Level
                 item.Picked -= OnFragmentPicked;
             }
 
+            foreach (var item in _bonusBricks)
+            {
+                item.Destroyed -= OnBonusBrickDestroyed;
+            }
+
             _bricksInvoker.Smashed -= OnBrickSmashed;
-            _destroyedBricksCounter.AllTargetBricksDestroyed -= OnAllTargetBricksDestroyed;
+            _levelFinisher.Finished -= OnLevelFinished;
         }
 
-        private void LoadLevelStatus()
-        {
-            LevelStates levelStates = SaveSystem.LoadLevelStates();
-            LevelState level = levelStates.Levels.First(item => item.Number == _currentLevel);
-            _hightScore = level.HightScore;
-        }
-
-        private void OnFragmentPicked(int value)
+        private void OnFragmentPicked(Fragment fragment)
         {
             FragmentsCollected++;
-            Score += value;
+            Score += fragment.Score;
         }
 
         private void OnBrickSmashed(BaseBrick brick)
@@ -67,9 +61,14 @@ namespace Level
             Score += brick.Value;
         }
 
-        private void OnAllTargetBricksDestroyed()
+        private void OnBonusBrickDestroyed(int score, int money)
         {
-            IsBeated = Score > _hightScore;
+            Score += score;
+        }
+
+        private void OnLevelFinished()
+        {
+            IsBeated = Score > _levelStateChanger.HightScore;
         }
     }
 }

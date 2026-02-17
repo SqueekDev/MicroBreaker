@@ -7,7 +7,7 @@ namespace MainMenu
     public class LevelView : MonoBehaviour
     {
         [SerializeField] private LevelsEnum _number;
-        [SerializeField] private LevelStatesChanger _levelStatesChanger;
+        [SerializeField] private LevelStatesInitializer _levelStateInitializer;
 
         public LevelsEnum Number => _number;
         public bool IsUnlocked { get; private set; }
@@ -16,12 +16,12 @@ namespace MainMenu
 
         private void OnEnable()
         {
-            _levelStatesChanger.Changed += OnLevelStateChanged;
+            _levelStateInitializer.Changed += OnLevelStateChanged;
         }
 
         private void OnDisable()
         {
-            _levelStatesChanger.Changed -= OnLevelStateChanged;
+            _levelStateInitializer.Changed -= OnLevelStateChanged;
         }
 
         private void OnLevelStateChanged(LevelStates levelStates)

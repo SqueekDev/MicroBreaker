@@ -11,10 +11,8 @@ namespace MainMenu
         [SerializeField] private MainMenuInputDetector _inputDetector;
         [SerializeField] private LevelSelector _levelSelector;
         [SerializeField] private LayerMask _inputLayerMask;
-        [SerializeField] private MoveBorder _leftBorder;
-        [SerializeField] private MoveBorder _rightBorder;
-        [SerializeField] private MoveBorder _bottomBorder;
-        [SerializeField] private MoveBorder _topBorder;
+        [SerializeField] private MoveBorder _bottomLeftBorder;
+        [SerializeField] private MoveBorder _topRightBorder;
         [SerializeField] private Vector3 _offset;
 
         private bool _isMovingToLevelTarget = false;
@@ -47,8 +45,8 @@ namespace MainMenu
 
         private void CheckBorders()
         {
-            _targetPosition.x = Mathf.Clamp(_targetPosition.x, _leftBorder.transform.position.x, _rightBorder.transform.position.x);
-            _targetPosition.z = Mathf.Clamp(_targetPosition.z, _bottomBorder.transform.position.z, _topBorder.transform.position.z);
+            _targetPosition.x = Mathf.Clamp(_targetPosition.x, _bottomLeftBorder.transform.position.x, _topRightBorder.transform.position.x);
+            _targetPosition.z = Mathf.Clamp(_targetPosition.z, _bottomLeftBorder.transform.position.z, _topRightBorder.transform.position.z);
         }
 
         private IEnumerator Moving(Vector3 position)

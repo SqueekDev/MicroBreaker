@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Controller;
 using UnityEngine;
 
 namespace Field
@@ -16,17 +15,19 @@ namespace Field
         public Action TargetDestroyed;
         public Action<int> TargetNumberInitiated;
 
+        public List<BricksChanger> TargetBricks => _targetBricks;
+
         private void OnEnable()
         {
             foreach (var item in _fieldBricks)
             {
                 item.Destroyed += OnSpawnableBrickDestroyed;
-                item.Destroyed += OnBrickDestroyed;
+                item.Destroyed += OnBrickSmashed;
             }
 
             foreach (var item in _fallingBricks)
             {
-                item.Destroyed += OnBrickDestroyed;
+                item.Destroyed += OnBrickSmashed;
             }
 
             foreach (var item in _targetBricks)
@@ -45,12 +46,12 @@ namespace Field
             foreach (var item in _fieldBricks)
             {
                 item.Destroyed -= OnSpawnableBrickDestroyed;
-                item.Destroyed -= OnBrickDestroyed;
+                item.Destroyed -= OnBrickSmashed;
             }
 
             foreach (var item in _fallingBricks)
             {
-                item.Destroyed -= OnBrickDestroyed;
+                item.Destroyed -= OnBrickSmashed;
             }
 
             foreach (var item in _targetBricks)
@@ -64,7 +65,7 @@ namespace Field
             SpawableDestroyed?.Invoke(baseBrick);
         }
 
-        private void OnBrickDestroyed(BaseBrick brick)
+        private void OnBrickSmashed(BaseBrick brick)
         {
             Smashed?.Invoke(brick);
         }

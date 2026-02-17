@@ -28,7 +28,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6160203270463265507}
   - {fileID: 1059715144966825763}
@@ -65,6 +65,7 @@ GameObject:
   - component: {fileID: 7427893143234399095}
   - component: {fileID: 1516748612376952495}
   - component: {fileID: 1442716956858571605}
+  - component: {fileID: 615697847845742804}
   m_Layer: 0
   m_Name: BaseCube
   m_TagString: Untagged
@@ -115,7 +116,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6f5b5470b12ef4847894bb7584d8f030, type: 2}
+  - {fileID: 2100000, guid: ab856bdc27ec3834d8be161df63ef234, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -149,7 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb6b6fef72a67e44faa24789d102ce8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _value: 0
+  _value: 30
+  _rigidbody: {fileID: 615697847845742804}
   _isFortified: 0
 --- !u!65 &1442716956858571605
 BoxCollider:
@@ -172,6 +174,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1.0000001}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &615697847845742804
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6686124404829074252}
+  serializedVersion: 4
+  m_Mass: 5
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &6788790029089620057
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,6 +214,7 @@ GameObject:
   - component: {fileID: 4987275755243594124}
   - component: {fileID: 6612748653124126657}
   - component: {fileID: 628398418566808074}
+  - component: {fileID: 54541084259006283}
   m_Layer: 0
   m_Name: Base
   m_TagString: Untagged
@@ -235,7 +265,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6f5b5470b12ef4847894bb7584d8f030, type: 2}
+  - {fileID: 2100000, guid: ab856bdc27ec3834d8be161df63ef234, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -269,7 +299,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb6b6fef72a67e44faa24789d102ce8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _value: 10
+  _value: 30
+  _rigidbody: {fileID: 54541084259006283}
   _isFortified: 0
 --- !u!65 &628398418566808074
 BoxCollider:
@@ -292,6 +323,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1.0000001}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &54541084259006283
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6788790029089620057}
+  serializedVersion: 4
+  m_Mass: 5
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7734313933962109773
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,6 +363,7 @@ GameObject:
   - component: {fileID: 5803172095702178678}
   - component: {fileID: 2565257789999844180}
   - component: {fileID: 5299879207997585509}
+  - component: {fileID: 2555286999026067907}
   m_Layer: 0
   m_Name: SteelCube
   m_TagString: Untagged
@@ -355,7 +414,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 135246bc01e45cd428f7966bbb1e4967, type: 2}
+  - {fileID: 2100000, guid: 5fa5da45167b769418c1d63e565cc453, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -411,3 +470,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _value: 0
+  _rigidbody: {fileID: 2555286999026067907}
+--- !u!54 &2555286999026067907
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7734313933962109773}
+  serializedVersion: 4
+  m_Mass: 5
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 122
+  m_CollisionDetection: 0

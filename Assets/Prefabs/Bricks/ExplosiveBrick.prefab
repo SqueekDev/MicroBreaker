@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3400197848999876896}
   - component: {fileID: 6647119491381086466}
   - component: {fileID: 8617396728281132199}
+  - component: {fileID: 8344563096421271131}
   m_Layer: 0
   m_Name: SteelCube
   m_TagString: Untagged
@@ -63,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 135246bc01e45cd428f7966bbb1e4967, type: 2}
+  - {fileID: 2100000, guid: 5fa5da45167b769418c1d63e565cc453, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -118,6 +119,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b2f9c65f5c2fee4e84fd65ad5e000e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _value: 200
+  _rigidbody: {fileID: 8344563096421271131}
+--- !u!54 &8344563096421271131
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509587823253823771}
+  serializedVersion: 4
+  m_Mass: 5
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 122
+  m_CollisionDetection: 0
 --- !u!1 &3849880528294127284
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,6 +161,7 @@ GameObject:
   - component: {fileID: 1058709010398174863}
   - component: {fileID: 8982699500494220119}
   - component: {fileID: 9052771969216204461}
+  - component: {fileID: 5547340702467431243}
   m_Layer: 0
   m_Name: BaseCube
   m_TagString: Untagged
@@ -181,7 +212,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6f5b5470b12ef4847894bb7584d8f030, type: 2}
+  - {fileID: 2100000, guid: ab856bdc27ec3834d8be161df63ef234, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -215,6 +246,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb6b6fef72a67e44faa24789d102ce8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _value: 30
+  _rigidbody: {fileID: 5547340702467431243}
   _isFortified: 0
 --- !u!65 &9052771969216204461
 BoxCollider:
@@ -237,6 +270,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1.0000001}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &5547340702467431243
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3849880528294127284}
+  serializedVersion: 4
+  m_Mass: 5
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5000933887499354046
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,7 +325,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7169369686917241630}
   - {fileID: 7426640323010065115}
@@ -353,8 +413,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7f037ffb89d811c4bbb36e73a092c29f, type: 2}
-  - {fileID: 2100000, guid: c48a4a634434c6f4b8a23099bdf472b8, type: 2}
+  - {fileID: 2100000, guid: ab856bdc27ec3834d8be161df63ef234, type: 2}
+  - {fileID: 2100000, guid: 403a016935999a244aebde9acf91b93d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -388,6 +448,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8561dc828522bf34ab6f5e0516af8735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _value: 30
+  _rigidbody: {fileID: 5090602683178537567}
   _explodeRadius: 1.5
 --- !u!65 &7603153503822457372
 BoxCollider:

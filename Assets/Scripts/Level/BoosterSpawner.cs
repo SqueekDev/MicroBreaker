@@ -8,8 +8,8 @@ namespace Level
     public class BoosterSpawner : MonoBehaviour
     {
         private const int MaxValue = 100;
-        private const int SpawnValue = 25;
-        private const int GuaranteedBossterSpawnCount = 4;
+        private const int SpawnChance = 10;
+        private const int GuaranteedBossterSpawnCount = 10;
 
         [SerializeField] private LevelStarter _levelController;
         [SerializeField] private float _force;
@@ -53,7 +53,7 @@ namespace Level
 
             if (_counter < GuaranteedBossterSpawnCount)
             {
-                isSpawning = Random.Range(0, MaxValue) < SpawnValue;
+                isSpawning = Random.Range(0, MaxValue) < SpawnChance;
                 _counter++;
             }
             else

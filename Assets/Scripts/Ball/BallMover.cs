@@ -1,6 +1,7 @@
 using System;
 using Controller;
 using Field;
+using Level;
 using Platform;
 using UnityEngine;
 
@@ -14,12 +15,13 @@ namespace Ball
         private const float SpeedModifier = 1.5f;
         private const float MaxBounceAngle = 30f;
         private const float MinContactDistanceRatio = 0.7f;
-        private const float MinZVelocity = 0.1f;
-        private const float VelocityZCorrectionForce = 0.2f;
+        private const float MinZVelocity = 0.3f;
+        private const float VelocityZCorrectionForce = 0.5f;
 
         [SerializeField] private BallLauncher _ballBeater;
-        [SerializeField] private BallSpeedController _speedController;
+        [SerializeField] private BallSpeedChanger _speedController;
         [SerializeField] private PowerPlatform _powerPlatformController;
+        [SerializeField] private TargetPoint _topRightBorder;
 
         private float _currentSpeed;
         private bool _isReleased = false;
@@ -40,6 +42,15 @@ namespace Ball
             _speedController.Changed += OnSpeedChanged;
             _currentSpeed = _speedController.CurrentBaseSpeed;
             _isReleased = true;
+        }
+
+        private void Update()
+        {
+            if (Mathf.Abs(transform.position.x) > _topRightBorder.transform.position.x 
+                || Mathf.Abs(transform.position.z) > _topRightBorder.transform.position.z)
+            {
+                Destroyed?.Invoke(this);
+            }
         }
 
         private void FixedUpdate()

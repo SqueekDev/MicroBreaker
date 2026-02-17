@@ -1,6 +1,6 @@
 using System.Collections;
 using Base;
-using Controller;
+using Platform;
 using Field;
 using UnityEngine;
 
@@ -22,7 +22,7 @@ namespace Ball
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.transform.TryGetComponent(out BallLauncher launcher))
+            if (collision.transform.TryGetComponent(out PlatformMover mover))
             {
                 _counter++;
 

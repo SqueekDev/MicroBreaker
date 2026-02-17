@@ -13,10 +13,8 @@ namespace Platform
         [SerializeField] private MainBallChanger _mainBallChanger;
         [SerializeField] private PlatformSpeedChanger _speedChanger;
         [SerializeField] private PlatformSizeChanger _sizeChanger;
-        [SerializeField] private MoveBorder _topBorder;
-        [SerializeField] private MoveBorder _bottomBorder;
-        [SerializeField] private MoveBorder _leftBorder;
-        [SerializeField] private MoveBorder _rightBorder;
+        [SerializeField] private MoveBorder _topRightBorder;
+        [SerializeField] private MoveBorder _bottonLeftBorder;
 
         private BallMover _ball;
         private Rigidbody _rigidbody;
@@ -24,6 +22,9 @@ namespace Platform
         private Vector3 _target;
         private float _verticalOffset;
         private float _horisontalOffset;
+
+        public float RightBorder => _collider.bounds.max.x;
+        public float Center => _collider.bounds.center.x;
 
         private void Awake()
         {
@@ -61,8 +62,8 @@ namespace Platform
 
         private void CheckBorders()
         {
-            _target.x = Mathf.Clamp(_target.x, _leftBorder.transform.position.x + _horisontalOffset, _rightBorder.transform.position.x - _horisontalOffset);
-            _target.z = Mathf.Clamp(_target.z, _bottomBorder.transform.position.z + _verticalOffset, _topBorder.transform.position.z - _verticalOffset);
+            _target.x = Mathf.Clamp(_target.x, _bottonLeftBorder.transform.position.x + _horisontalOffset, _topRightBorder.transform.position.x - _horisontalOffset);
+            _target.z = Mathf.Clamp(_target.z, _bottonLeftBorder.transform.position.z + _verticalOffset, _topRightBorder.transform.position.z - _verticalOffset);
         }
 
         private void OnTargetChanged(Vector3 currentTarget)

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Base;
 using MainMenu;
 using UnityEngine;
 
@@ -7,30 +9,55 @@ namespace ShopMenu
     {
         [SerializeField] private MainMenuCameraMover _cameraMover;
         [SerializeField] private LevelSelector _levelSelector;
-        [SerializeField] private ShopPanel _shopPanel;
+        [SerializeField] private List<InvokingPanel> _panels;
+
+        private int _openedPanelsCounter;
+
+        private void Awake()
+        {
+            _openedPanelsCounter = _panels.Count;
+        }
 
         private void OnEnable()
         {
-            _shopPanel.Opened += OnShopPanelOpened;
-            _shopPanel.Closed += OnShopPanelClosed;
+            foreach (var item in _panels)
+            {
+                item.Opened += OnPanelOpened;
+                item.Closed += OnPanelClosed;
+            }
         }
 
         private void OnDisable()
         {
-            _shopPanel.Opened -= OnShopPanelOpened;
-            _shopPanel.Closed -= OnShopPanelClosed;
+            foreach (var item in _panels)
+            {
+                item.Opened += OnPanelOpened;
+                item.Closed += OnPanelClosed;
+            }
         }
 
-        private void OnShopPanelOpened()
+        private void SetHandlersState(bool state)
         {
-            _cameraMover.enabled = false;
-            _levelSelector.enabled = false;
+            _cameraMover.enabled = state;
+            _levelSelector.enabled = state;
         }
 
-        private void OnShopPanelClosed()
+        private void OnPanelOpened()
         {
-            _cameraMover.enabled = true;
-            _levelSelector.enabled = true;
+            _openedPanelsCounter++;
+            SetHandlersState(false);
+        }
+
+        private void OnPanelClosed()
+        {
+            _openedPanelsCounter--;
+
+            if (_openedPanelsCounter > 0)
+            {
+                return;
+            }
+
+            SetHandlersState(true);
         }
     }
 }

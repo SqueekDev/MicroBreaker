@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 7649634066092424922}
   - component: {fileID: 6881327641294420830}
   - component: {fileID: 5171942691392062709}
+  - component: {fileID: 3788743817778887014}
+  - component: {fileID: 770803066323412371}
   m_Layer: 0
   m_Name: Fragment
   m_TagString: Untagged
@@ -146,4 +148,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8384b9224ca8f4ea8512c023a3a0cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _value: 20
+  _score: 100
+  _money: 50
+--- !u!114 &3788743817778887014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6084518227428935931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fd278ea5803e6641a346a2ff5760d2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &770803066323412371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6084518227428935931}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec5423bbb9f58c140bb773b155323eb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 0}
+  _attractionForce: 20

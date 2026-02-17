@@ -8,7 +8,7 @@ namespace Field
 {
     public class ExplosiveBrick : BaseDestructableBrick
     {
-        private const float DelayTime = 2f;
+        private const float DelayTime = 1f;
 
         [SerializeField] private float _explodeRadius;
 

@@ -7,7 +7,7 @@ namespace Ball
 {
     public class MainBallChanger : MonoBehaviour
     {
-        [SerializeField] private MultiBallController _multiBallController;
+        [SerializeField] private MultiBallEnabler _multiBallController;
 
         public Action<BallMover> Changed;
 

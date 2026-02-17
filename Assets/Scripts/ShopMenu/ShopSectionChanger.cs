@@ -11,7 +11,7 @@ namespace ShopMenu
         [SerializeField] private List<ShopSwitchButton> _buttons;
         [SerializeField] private SectionView _baseView;
         [SerializeField] private SectionIcon _baseIcon;
-        [SerializeField] private ShopPanel _shopPanel;
+        [SerializeField] private InvokingPanel _shopPanel;
         [SerializeField] private CloseShopButton _closeButton;
         [SerializeField] private List<SectionView> _sections;
 

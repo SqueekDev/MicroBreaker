@@ -6,13 +6,13 @@ namespace Platform
 {
     public class FragmentsCollector : MonoBehaviour
     {
-        public Action<int> Picked;
+        public Action<Fragment> Picked;
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out Fragment franment))
             {
-                Picked?.Invoke(franment.Value);
+                Picked?.Invoke(franment);
             }
         }
     }

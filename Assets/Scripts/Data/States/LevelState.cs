@@ -1,4 +1,5 @@
 using System;
+using Newtonsoft.Json;
 
 namespace Data
 {
@@ -14,9 +15,10 @@ namespace Data
         }
 
         public LevelsEnum Number { get; private set; }
-        public bool IsUnlocked { get; private set; } = false;
-        public bool IsCompleted { get; private set; } = false;
-        public int HightScore { get; private set; } = 0;
+        public bool IsUnlocked { get; private set; }
+        public bool IsCompleted { get; private set; }
+        [JsonProperty]
+        public int HightScore { get; private set; }
 
         public void SetUnlockedStatus(bool isUnlocked)
         {
