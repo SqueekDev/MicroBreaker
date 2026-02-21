@@ -1,0 +1,3 @@
+﻿Build path: E:/Files for Unity/Builds/BrickSmasher/BrickSmasher/1
+Build number: 1
+PluginYG version: 2.008

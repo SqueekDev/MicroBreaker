@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Boosters;
 using DG.Tweening;
 using UnityEngine;
 
@@ -7,7 +6,6 @@ namespace Level
 {
     public abstract class BaseActBehavior : MonoBehaviour
     {
-        [SerializeField] private BoostersNotifier _boostersNotifier;
         [SerializeField] private float _delayBeforeStartTime;
         [SerializeField] private float _actingTime;
         [SerializeField] private float _delayBeforeStepTime;

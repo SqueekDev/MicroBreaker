@@ -36,7 +36,7 @@ namespace MainMenu
 
             foreach (var item in _levels)
             {
-                levels.Add(new LevelState(item.Number, false, false, 0));
+                levels.Add(new LevelState(item.Number, true, false, 0));
             }
 
             LevelState firstLevel = levels.First(level => level.Number == LevelsEnum.Level_1);

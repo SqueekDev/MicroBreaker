@@ -17415,8 +17415,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _notifier: {fileID: 1793176085}
-  _increasedSizeMultiplier: {x: 2, y: 1, z: 1}
-  _decreasedSizeMultiplier: {x: 0.5, y: 1, z: 1}
+  _increasedSizeMultiplier: {x: 1.5, y: 1, z: 1}
+  _decreasedSizeMultiplier: {x: 0.7, y: 1, z: 1}
   _targets:
   - {fileID: 1703425542}
   - {fileID: 1794500008}

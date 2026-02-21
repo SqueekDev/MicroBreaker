@@ -9945,7 +9945,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a699f38c27d450d4bb3805f20ea45949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boostersNotifier: {fileID: 1793176085}
   _delayBeforeStartTime: 0
   _actingTime: 3
   _delayBeforeStepTime: 0
@@ -9968,7 +9967,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a699f38c27d450d4bb3805f20ea45949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boostersNotifier: {fileID: 1793176085}
   _delayBeforeStartTime: 0
   _actingTime: 3
   _delayBeforeStepTime: 0
@@ -12167,7 +12165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a699f38c27d450d4bb3805f20ea45949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boostersNotifier: {fileID: 1793176085}
   _delayBeforeStartTime: 0
   _actingTime: 3
   _delayBeforeStepTime: 0
@@ -13272,7 +13269,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a699f38c27d450d4bb3805f20ea45949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boostersNotifier: {fileID: 1793176085}
   _delayBeforeStartTime: 0
   _actingTime: 3
   _delayBeforeStepTime: 0
@@ -14819,7 +14815,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a699f38c27d450d4bb3805f20ea45949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boostersNotifier: {fileID: 1793176085}
   _delayBeforeStartTime: 0
   _actingTime: 3
   _delayBeforeStepTime: 0
@@ -16059,8 +16054,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _notifier: {fileID: 1793176085}
-  _increasedSizeMultiplier: {x: 2, y: 1, z: 1}
-  _decreasedSizeMultiplier: {x: 0.5, y: 1, z: 1}
+  _increasedSizeMultiplier: {x: 1.5, y: 1, z: 1}
+  _decreasedSizeMultiplier: {x: 0.7, y: 1, z: 1}
   _targets:
   - {fileID: 1703425542}
   - {fileID: 1794500008}
@@ -17801,7 +17796,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a699f38c27d450d4bb3805f20ea45949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boostersNotifier: {fileID: 1793176085}
   _delayBeforeStartTime: 0
   _actingTime: 3
   _delayBeforeStepTime: 0
@@ -21162,7 +21156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a699f38c27d450d4bb3805f20ea45949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boostersNotifier: {fileID: 1793176085}
   _delayBeforeStartTime: 0
   _actingTime: 3
   _delayBeforeStepTime: 0
@@ -22122,7 +22115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a699f38c27d450d4bb3805f20ea45949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boostersNotifier: {fileID: 1793176085}
   _delayBeforeStartTime: 0
   _actingTime: 3
   _delayBeforeStepTime: 0
@@ -22419,7 +22411,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a699f38c27d450d4bb3805f20ea45949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boostersNotifier: {fileID: 1793176085}
   _delayBeforeStartTime: 0
   _actingTime: 3
   _delayBeforeStepTime: 0
@@ -23439,7 +23430,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a699f38c27d450d4bb3805f20ea45949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boostersNotifier: {fileID: 1793176085}
   _delayBeforeStartTime: 0
   _actingTime: 3
   _delayBeforeStepTime: 0
@@ -24077,7 +24067,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a699f38c27d450d4bb3805f20ea45949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boostersNotifier: {fileID: 1793176085}
   _delayBeforeStartTime: 0
   _actingTime: 3
   _delayBeforeStepTime: 0
@@ -24820,7 +24809,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a699f38c27d450d4bb3805f20ea45949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boostersNotifier: {fileID: 1793176085}
   _delayBeforeStartTime: 0
   _actingTime: 3
   _delayBeforeStepTime: 0

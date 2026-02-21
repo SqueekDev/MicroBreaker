@@ -22,11 +22,6 @@ namespace Data
         Level_13b,
         Level_14a,
         Level_14b,
-        Level_14c,
-        Level_15,
-        Level_16,
-        Level_17,
-        Level_18,
-        Level_19
+        Level_14c
     }
 }
