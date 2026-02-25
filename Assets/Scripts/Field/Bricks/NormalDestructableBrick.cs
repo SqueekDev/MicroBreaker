@@ -22,7 +22,7 @@ namespace Field
 
                 if (_isFortified == false || ball.IsAmplifyed)
                 {
-                    Triggered?.Invoke();
+                    TakeDamage();
                 }
             }
         }
@@ -31,7 +31,7 @@ namespace Field
         {
             if (other.TryGetComponent(out LaserProjectile laser))
             {
-                Triggered?.Invoke();
+                TakeDamage();
             }
         }
     }

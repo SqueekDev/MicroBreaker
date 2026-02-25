@@ -9,8 +9,10 @@ namespace Platform
 {
     public class PlatformSizeChanger : BaseSizeChanger
     {
+        private const float InvokingDelayTime = 0.05f;
+
         private Coroutine _invokingCoroutine;
-        private WaitForFixedUpdate _delay = new WaitForFixedUpdate();
+        private WaitForSeconds _delay = new WaitForSeconds(InvokingDelayTime);
 
         public Action Changed;
 

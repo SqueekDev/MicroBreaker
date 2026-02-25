@@ -249,6 +249,7 @@ MonoBehaviour:
   _value: 30
   _rigidbody: {fileID: 5547340702467431243}
   _isFortified: 0
+  _dectructCounter: 0
 --- !u!65 &9052771969216204461
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -349,6 +350,7 @@ MonoBehaviour:
   _zapBrick: {fileID: 8982699500494220119}
   _steelBrick: {fileID: 8617396728281132199}
   _levelController: {fileID: 0}
+  _kickForce: 10
 --- !u!1 &7509021282170012068
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,7 +394,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7509021282170012068}
-  m_Mesh: {fileID: 4493585093827132993, guid: cf329dde16d3211428f0889b2bbfefee, type: 3}
+  m_Mesh: {fileID: -5053925668127403250, guid: b54befb92161a4d44843d0e918b1dcec, type: 3}
 --- !u!23 &8301712334950768753
 MeshRenderer:
   m_ObjectHideFlags: 0

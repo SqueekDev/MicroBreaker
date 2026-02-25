@@ -10,6 +10,7 @@ namespace Level
         [SerializeField] private float _actingTime;
         [SerializeField] private float _delayBeforeStepTime;
         [SerializeField] private float _delayAfterStepTime;
+        [SerializeField] private float _delayAfterLoopTime;
 
         private Sequence _sequence;
 
@@ -44,6 +45,7 @@ namespace Level
                 _sequence.Append(sequence);
             }
 
+            _sequence.AppendInterval(_delayAfterLoopTime);
             _sequence.SetLoops(-1, LoopType.Incremental);
         }
     }

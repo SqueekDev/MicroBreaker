@@ -5,7 +5,7 @@ namespace Level
 {
     public class LevelTimeCounter : MonoBehaviour
     {
-        private const float TimeToLaser = 120f;
+        private const float TimeToLaser = 60f;
 
         [SerializeField] private LevelStarter _starter;
         [SerializeField] private LevelFinisher _finisher;
