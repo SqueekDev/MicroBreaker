@@ -8,12 +8,13 @@ namespace Controller
 {
     public class PlatformMoveTargetSetter : MonoBehaviour
     {
+        private const float OffsetZ = 1.5f;
+
         [SerializeField] private InputDetector _inputDetector;
         [SerializeField] private PlatformInversionChanger _inversionChanger;
         [SerializeField] private LevelStarter _levelController;
         [SerializeField] private StartPlatformPosition _startPosition;
         [SerializeField] private LayerMask _inputMask;
-        [SerializeField] private float _zOffset;
         [SerializeField] private float _baseInversion;
 
         private float _rayDistance = Mathf.Infinity;
@@ -28,7 +29,7 @@ namespace Controller
         private void Awake()
         {
             _camera = Camera.main;
-            _offset = new Vector3(0, 0, _zOffset);
+            _offset = new Vector3(0, 0, OffsetZ);
         }
 
         private void OnEnable()

@@ -772,7 +772,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.41000003, y: 0.038307697}
   m_AnchorMax: {x: 0.59000003, y: 0.9603847}
-  m_AnchoredPosition: {x: 0, y: 319.98938}
+  m_AnchoredPosition: {x: 0, y: 319.9894}
   m_SizeDelta: {x: 10.169998, y: 13.831146}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &13129577
@@ -1017,7 +1017,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6818354, y: 0.23138462}
   m_AnchorMax: {x: 0.91750747, y: 0.7683077}
-  m_AnchoredPosition: {x: 15.931382, y: 799.9999}
+  m_AnchoredPosition: {x: 15.931381, y: 800}
   m_SizeDelta: {x: 15.315491, y: 8.053841}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &18174624
@@ -1723,7 +1723,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6818354, y: 0.23138462}
   m_AnchorMax: {x: 0.91750747, y: 0.7683077}
-  m_AnchoredPosition: {x: 15.931382, y: 479.99738}
+  m_AnchoredPosition: {x: 15.931381, y: 479.99738}
   m_SizeDelta: {x: 15.315491, y: 8.053841}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &33970667
@@ -2208,7 +2208,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6818354, y: 0.23138462}
   m_AnchorMax: {x: 0.91750747, y: 0.7683077}
-  m_AnchoredPosition: {x: 15.931367, y: -0.001159668}
+  m_AnchoredPosition: {x: 15.931366, y: -0.001159668}
   m_SizeDelta: {x: 15.315491, y: 8.053841}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &50710760
@@ -2246,7 +2246,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -4317,7 +4317,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &106669220
 MeshRenderer:
@@ -8173,7 +8173,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &225938046
 MeshRenderer:
@@ -10817,7 +10817,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6818354, y: 0.23138462}
   m_AnchorMax: {x: 0.91750747, y: 0.7683077}
-  m_AnchoredPosition: {x: 15.931382, y: 1119.998}
+  m_AnchoredPosition: {x: 15.931381, y: 1119.998}
   m_SizeDelta: {x: 15.315491, y: 8.053841}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &284220998
@@ -19523,7 +19523,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &505853345
 MeshRenderer:
@@ -19643,7 +19643,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &512478858
 MeshRenderer:
@@ -21533,7 +21533,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6818354, y: 0.23138462}
   m_AnchorMax: {x: 0.91750747, y: 0.7683077}
-  m_AnchoredPosition: {x: 15.931382, y: 2239.997}
+  m_AnchoredPosition: {x: 15.931381, y: 2239.997}
   m_SizeDelta: {x: 15.315491, y: 8.053841}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &559284215
@@ -21722,7 +21722,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6818354, y: 0.23138462}
   m_AnchorMax: {x: 0.91750747, y: 0.7683077}
-  m_AnchoredPosition: {x: 15.931382, y: 1599.9977}
+  m_AnchoredPosition: {x: 15.931381, y: 1599.9977}
   m_SizeDelta: {x: 15.315491, y: 8.053841}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &564515804
@@ -30147,7 +30147,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6818354, y: 0.23138462}
   m_AnchorMax: {x: 0.91750747, y: 0.7683077}
-  m_AnchoredPosition: {x: 15.931382, y: 800.00085}
+  m_AnchoredPosition: {x: 15.931381, y: 800.001}
   m_SizeDelta: {x: 15.315491, y: 8.053841}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &844618174
@@ -30338,7 +30338,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &851574578
 MeshRenderer:
@@ -30937,7 +30937,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6818354, y: 0.23138462}
   m_AnchorMax: {x: 0.91750747, y: 0.7683077}
-  m_AnchoredPosition: {x: 15.931382, y: 1279.9979}
+  m_AnchoredPosition: {x: 15.931381, y: 1279.9979}
   m_SizeDelta: {x: 15.315491, y: 8.053841}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &884942763
@@ -30994,7 +30994,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &884942766
 MeshRenderer:
@@ -31782,7 +31782,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &900339692
 MeshRenderer:
@@ -36829,7 +36829,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6818354, y: 0.23138462}
   m_AnchorMax: {x: 0.91750747, y: 0.7683077}
-  m_AnchoredPosition: {x: 15.931367, y: 159.99875}
+  m_AnchoredPosition: {x: 15.931366, y: 159.99875}
   m_SizeDelta: {x: 15.315491, y: 8.053841}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1031205587
@@ -37129,7 +37129,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32.7
+  m_fontSize: 33
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -39468,7 +39468,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1090052767
 MeshRenderer:
@@ -39851,7 +39851,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1101642783
 MeshRenderer:
@@ -40257,7 +40257,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1112557242
 MeshRenderer:
@@ -40446,7 +40446,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6818354, y: 0.23138462}
   m_AnchorMax: {x: 0.91750747, y: 0.7683077}
-  m_AnchoredPosition: {x: 15.931382, y: 639.9987}
+  m_AnchoredPosition: {x: 15.931381, y: 639.99884}
   m_SizeDelta: {x: 15.315491, y: 8.053841}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1116471794
@@ -43239,7 +43239,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1189395742
 MeshRenderer:
@@ -44885,7 +44885,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6818354, y: 0.23138462}
   m_AnchorMax: {x: 0.91750747, y: 0.7683077}
-  m_AnchoredPosition: {x: 15.931382, y: 640}
+  m_AnchoredPosition: {x: 15.931381, y: 640.0001}
   m_SizeDelta: {x: 15.315491, y: 8.053841}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1262443715
@@ -45111,7 +45111,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.41000003, y: 0.038307697}
   m_AnchorMax: {x: 0.59000003, y: 0.9603847}
-  m_AnchoredPosition: {x: 0, y: 479.98926}
+  m_AnchoredPosition: {x: 0, y: 479.9893}
   m_SizeDelta: {x: 10.169998, y: 13.831146}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1275688221
@@ -51728,7 +51728,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1448231615
 MeshRenderer:
@@ -53483,7 +53483,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6818354, y: 0.23138462}
   m_AnchorMax: {x: 0.91750747, y: 0.7683077}
-  m_AnchoredPosition: {x: 15.931382, y: 1759.9976}
+  m_AnchoredPosition: {x: 15.931381, y: 1759.9976}
   m_SizeDelta: {x: 15.315491, y: 8.053841}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1497738085
@@ -56969,7 +56969,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1578635319
 MeshRenderer:
@@ -57161,7 +57161,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1588483618
 MeshRenderer:
@@ -58744,7 +58744,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6818354, y: 0.23138462}
   m_AnchorMax: {x: 0.91750747, y: 0.7683077}
-  m_AnchoredPosition: {x: 15.931382, y: 959.99976}
+  m_AnchoredPosition: {x: 15.931381, y: 959.9999}
   m_SizeDelta: {x: 15.315491, y: 8.053841}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1614333099
@@ -60380,7 +60380,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6818354, y: 0.23138462}
   m_AnchorMax: {x: 0.91750747, y: 0.7683077}
-  m_AnchoredPosition: {x: 15.931382, y: 2079.9973}
+  m_AnchoredPosition: {x: 15.931381, y: 2079.9973}
   m_SizeDelta: {x: 15.315491, y: 8.053841}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1643151533
@@ -61664,7 +61664,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1672208997
 MeshRenderer:
@@ -64226,7 +64226,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1745687339
 MeshRenderer:
@@ -64325,7 +64325,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6818354, y: 0.23138462}
   m_AnchorMax: {x: 0.91750747, y: 0.7683077}
-  m_AnchoredPosition: {x: 15.931382, y: 959.99963}
+  m_AnchoredPosition: {x: 15.931381, y: 959.99976}
   m_SizeDelta: {x: 15.315491, y: 8.053841}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1751122013
@@ -64864,7 +64864,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6818354, y: 0.23138462}
   m_AnchorMax: {x: 0.91750747, y: 0.7683077}
-  m_AnchoredPosition: {x: 15.931382, y: 479.99738}
+  m_AnchoredPosition: {x: 15.931381, y: 479.99738}
   m_SizeDelta: {x: 15.315491, y: 8.053841}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1758493323
@@ -65802,7 +65802,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6818354, y: 0.23138462}
   m_AnchorMax: {x: 0.91750747, y: 0.7683077}
-  m_AnchoredPosition: {x: 15.931382, y: 159.99762}
+  m_AnchoredPosition: {x: 15.931381, y: 159.99762}
   m_SizeDelta: {x: 15.315491, y: 8.053841}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1784791335
@@ -66091,7 +66091,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1792415097
 MeshRenderer:
@@ -66404,7 +66404,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6818354, y: 0.23138462}
   m_AnchorMax: {x: 0.91750747, y: 0.7683077}
-  m_AnchoredPosition: {x: 15.931382, y: 319.9975}
+  m_AnchoredPosition: {x: 15.931381, y: 319.9975}
   m_SizeDelta: {x: 15.315491, y: 8.053841}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1808801009
@@ -67009,7 +67009,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.41000003, y: 0.038307697}
   m_AnchorMax: {x: 0.59000003, y: 0.9603847}
-  m_AnchoredPosition: {x: 0, y: 479.99023}
+  m_AnchoredPosition: {x: 0, y: 479.99026}
   m_SizeDelta: {x: 10.169998, y: 13.831146}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1840725777
@@ -67441,7 +67441,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1855517358
 MeshRenderer:
@@ -67697,7 +67697,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6818354, y: 0.23138462}
   m_AnchorMax: {x: 0.91750747, y: 0.7683077}
-  m_AnchoredPosition: {x: 15.931382, y: 1439.9978}
+  m_AnchoredPosition: {x: 15.931381, y: 1439.9978}
   m_SizeDelta: {x: 15.315491, y: 8.053841}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1866840574
@@ -68608,7 +68608,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6818354, y: 0.23138462}
   m_AnchorMax: {x: 0.91750747, y: 0.7683077}
-  m_AnchoredPosition: {x: 15.931382, y: 1119.998}
+  m_AnchoredPosition: {x: 15.931381, y: 1119.998}
   m_SizeDelta: {x: 15.315491, y: 8.053841}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1889911285
@@ -68763,7 +68763,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1891419173
 MeshRenderer:
@@ -69878,7 +69878,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6818354, y: 0.23138462}
   m_AnchorMax: {x: 0.91750747, y: 0.7683077}
-  m_AnchoredPosition: {x: 15.931382, y: 319.9975}
+  m_AnchoredPosition: {x: 15.931381, y: 319.9975}
   m_SizeDelta: {x: 15.315491, y: 8.053841}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1940319503
@@ -71636,7 +71636,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6818354, y: 0.23138462}
   m_AnchorMax: {x: 0.91750747, y: 0.7683077}
-  m_AnchoredPosition: {x: 15.931382, y: 1919.9974}
+  m_AnchoredPosition: {x: 15.931381, y: 1919.9974}
   m_SizeDelta: {x: 15.315491, y: 8.053841}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1982120509
@@ -74773,7 +74773,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2061586453
 MeshRenderer:
@@ -77537,7 +77537,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.41000003, y: 0.038307697}
   m_AnchorMax: {x: 0.59000003, y: 0.9603847}
-  m_AnchoredPosition: {x: 0, y: 319.9915}
+  m_AnchoredPosition: {x: 0, y: 319.99152}
   m_SizeDelta: {x: 10.169998, y: 13.831146}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2140839055
